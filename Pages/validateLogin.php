@@ -28,7 +28,12 @@
             //     print_r($usersData);
             // }
             // die(); 
+            session_start();
             $_SESSION['username'] = $username;
+            $_SESSION['loggedin'] = true;
+            // print_r($_SESSION['username']);
+            // print_r($_SESSION['loggedin']);
+            // die();
             header("location: ../loggedIn/home.php");
 
         }

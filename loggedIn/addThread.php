@@ -43,21 +43,31 @@
         </ul>
       </div>
     </nav>
+    
+    <?php 
+        session_start();
+        $mysqli = new mysqli('localhost','root','','forum');
+        require 'validateThread.php'; 
+        $_SESSION['message']='';
+        
+    ?>
+        
+
+
+
     <div class="body-content">
         <div class="module">
-        <?php 
-            //$_SESSION variables become available on this page
-            session_start();
-            // $_SESSION['message'] = '';
-            // $mysqli = new mysqli('localhost','root','','forum');
-            // $username =  $_SESSION['username'];
-            // echo $username;
-        ?>
-        <!-- <?= $_SESSION['username'] ?> -->
-
+            <h1>Add New Thread</h1>
+            <form class="form" action="addThread.php" method="post" enctype="multipart/form-data" autocomplete="off">
+            <div class="alert alert-error"><?= $_SESSION['message'] ?></div>
+            <input type="text" placeholder="topic" name="topic" required />
+            <input type="text" placeholder="Summary" name="summary" required />
+            <input type="text" placeholder="Tag" name="tag" required />
+            <input type="submit" value="Add this Thread" name="addThread" class="btn btn-block btn-primary" />
+            </form>
+            <!-- <textarea name="summary" placeholder="Summary" form="usrform">Enter text here...</textarea> -->
         </div>
     </div>
-
 
 
 

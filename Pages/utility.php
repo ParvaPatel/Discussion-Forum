@@ -15,7 +15,7 @@ error_reporting(1);
 	function ExecuteNonQuery ($SQL)
 	{
 		$con=mysqli_connect ("localhost", "root","");
-		mysqli_select_db ($con,"froum");
+		mysqli_select_db ($con,"forum");
 		
 		$result = mysqli_query ($con,$SQL);
 		
