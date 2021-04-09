@@ -54,14 +54,14 @@
             // $mysqli = new mysqli('localhost','root','','forum');
             // $username =  $_SESSION['username'];
             // echo $username;
-            $str = "SELECT * from threads";
+            $str = "SELECT * from threads where threadId = $_GET[id]";
             $result=ExecuteQuery($str);
             $noRows = mysqli_num_rows($result);
             while($row = mysqli_fetch_assoc($result)){
                   $topic = $row['topic'];
-                  echo "<h1><a href='threadView.php?id=$row[threadId]'>";
+                  echo "<h1>";
                   echo $topic;
-                  echo "</a></h1><br/><br/>";
+                  echo "</h1><br/><br/>";
                   $summary = $row['summary'];
                   echo $summary;
                   echo "<br/><br/><br/>";
