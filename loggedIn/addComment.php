@@ -43,53 +43,36 @@
         </ul>
       </div>
     </nav>
+    
+    <?php 
+        session_start();
+        $_SESSION['message']='';
+        // $_SESSION['threadId']=$_GET[id];
+        $mysqli = new mysqli('localhost','root','','forum');
+        require 'validateComment.php'; 
+        
+        
+    ?>
+        
+
+
 
     <div class="body-content">
         <div class="module">
-        <?php 
-            include '../Pages/utility.php';
-            //$_SESSION variables become available on this page
-            session_start();
-            // $_SESSION['message'] = '';
-            // $mysqli = new mysqli('localhost','root','','forum');
-            // $username =  $_SESSION['username'];
-            // echo $username;
-            $str = "SELECT * from threads where threadId = $_GET[id]";
-            $result=ExecuteQuery($str);
-            $noRows = mysqli_num_rows($result);
-            while($row = mysqli_fetch_assoc($result)){
-                    $topic = $row['topic'];
-                    echo "<h1>";
-                    echo $topic;
-                    echo "</h1>";
-                    echo "<a href = 'addComment.php?id=$_GET[id]'> Add a new Comment </a>";
-                    echo"<br/><br/>";
-                    $summary = $row['summary'];
-                    echo $summary;
-                    echo "<br/><br/><br/>";
-                    $tDateTime = $row['tDateTime'];
-                    echo $tDateTime;
-                    echo "<br/><br/>";
-                    $tag = $row['tag'];
-                    echo $tag;
-            }
-            echo "<h1> Comments </h1>";
-                 
-            $str = "SELECT * from comments where threadId = $_GET[id]";
-            $result=ExecuteQuery($str);
-            while($row = mysqli_fetch_assoc($result)){
-                
-                $description = $row['description'];
-                echo $description;
-                echo "<br/>";
-                $cDateTime = $row['cDateTime'];
-                echo $cDateTime;
-                echo "<br/><br/>";
-                
-          }
-        ?>
+            <h1>Add New Comment</h1>
+            <form class="form" action="addComment.php" method="post" enctype="multipart/form-data" autocomplete="off">
+            <div class="alert alert-error"><?= $_SESSION['message'] ?></div>
+            <input type="text" placeholder="Description" name="description" required />
+            <input type="submit" value="Add this Comment" name="addComment" class="btn btn-block btn-primary" />
+
+            <input type="hidden" value="<?php echo $_GET["id"] ?>" name="threadId"  />
+            </form>
+            <!-- <textarea name="summary" placeholder="Summary" form="usrform">Enter text here...</textarea> -->
+        </div>
     </div>
-    </div>
+
+
+
 
     <!-- Start Footer -->
     <footer class="footer-area bg-f">
