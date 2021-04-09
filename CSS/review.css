@@ -1,0 +1,299 @@
+/* Whole Document */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color:lightgoldenrodyellow!important;
+}
+
+/* Navigation Bar */
+#navbar {
+  display: flex; /*Using FlexBox*/
+  align-items: center;
+  position: relative; 
+}
+
+/* Navigation Bar : Logo and Image */
+#logo {
+  margin: 8px 8px;
+}
+
+#logo img {
+  margin: 8px 8px;
+  height: "100px";
+  width: "150px";
+}
+
+/* Navigation Bar : List Styling */
+#navbar::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+#navbar ul {
+  display: flex;
+  font-family: "Baloo Bhai 2", cursive;
+}
+
+#navbar ul li {
+  list-style: none;
+  font-size: 1.4rem;
+}
+
+#navbar ul li a {
+  color: black;
+  background-color: gold;
+  display: block;
+  padding: 10px 10px;
+  border-radius: 20px;
+  text-decoration: none;
+  margin: 5px;
+}
+
+#navbar ul li a:hover {
+  color: black;
+  background-color: lightgoldenrodyellow;
+}
+
+/* Utility Class */
+.h-primary {
+  font-size: 3.5rem;
+  padding: 15px;
+  position: relative;
+  float: left;
+}
+
+#review_section {
+  display: flex;
+  flex-direction: column;
+  padding:0px 190px 0px 190px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#review_section::before {
+  content: "";
+  background: url(../Pictures/all-bg.jpg) no-repeat center center/cover;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  height: 40%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.95;
+  background-color: lightgoldenrodyellow;
+}
+
+#review_section h1 {
+  color: white;
+  text-align: center;
+  font-family: "Bree Serif", serif;
+}
+
+#review_section div p {
+  color:black;
+  background-color:wheat;
+  border-radius: 1cm;
+  margin-left: 5px;
+  font-size: 1.5rem;
+  font-family: "Bree Serif", serif;
+  position: relative;
+  float: left;
+  width: 32%;
+  padding: 2.5%;
+  text-align: justify;
+  display: flex;
+}
+
+#review_section div p:hover{
+    color:purple;
+  border-radius: 1cm;
+}
+
+/*Footer*/
+.footer-area {
+  padding-top: 50px;
+  padding-bottom: 0px;
+}
+
+.bg-f {
+  background-image: url("../Pictures/footer-bg.jpg");
+  background-attachment: scroll;
+  background-clip: initial;
+  background-color: rgba(0, 0, 0, 0);
+  background-origin: initial;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.bg-f::before {
+  background: #010101;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.footer-area .container {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-area h3 {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(207, 166, 113, 0.5);
+  margin-bottom: 10px;
+}
+
+.footer-area p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+.arrow-right {
+  position: relative;
+}
+
+.arrow-right::before {
+  content: "\f101";
+  font-family: "FontAwesome";
+  position: absolute;
+  right: 0px;
+  top: 0;
+  color: #fff;
+  font-size: 60px;
+  line-height: 60px;
+}
+
+.footer-area p.lead {
+  font-size: 19px;
+  color: #ffffff;
+  margin-bottom: 0px;
+}
+
+.footer-area p.lead a {
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.footer-area p.lead a:hover {
+  color: #d65106;
+}
+
+.footer-area p a {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.footer-area p a:hover {
+  color: #d65106;
+}
+
+.subscribe_form {
+  display: block;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.subscribe_form .form_input {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid #ffffff;
+  color: #fff;
+  font-size: 14px;
+  line-height: 50px;
+  padding: 0 10px;
+  float: left;
+  font-weight: 300;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+.subscribe_form .submit {
+  background-color: #d65106;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 50px;
+  display: inline-block;
+  padding: 0 10px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.subscribe_form .submit:hover {
+  background: #f3ab0f;
+}
+
+.copyright {
+  margin-top: 20px;
+  position: relative;
+  display: block;
+  background-color: #010101;
+  border-top: 1px solid rgba(207, 166, 113);
+  padding: 30px 0;
+  z-index: 1;
+}
+
+.copyright .company-name {
+  font-size: 16px;
+  text-align: center;
+}
+
+.copyright .company-name a {
+  font-size: 16px;
+}
+/*Footer Ends*/
+
+/*Media Query*/
+
+/*Some part used from phone.css*/
+@media(max-width: 1520px ){
+  #review_section{
+    padding: 0 100px 0 100px;
+  }
+
+  #review_section div p {
+    font-size: 1rem;
+  }
+
+  body{
+    background-image: none;
+  }
+
+  #navbar::before{
+    background-color: lightgoldenrodyellow;
+  }
+}
+
+@media(max-width:1250px){
+  #review_section{
+    padding: 0 20px 0px 20px;
+  }
+
+  #review_section div p{
+    display: block;
+    width: 100%;
+    float: none;
+  }
+}

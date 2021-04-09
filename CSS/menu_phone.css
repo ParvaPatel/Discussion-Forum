@@ -1,0 +1,200 @@
+/* Navigation */
+#navbar{
+    flex-direction: column;
+  }
+  
+  #navbar ul li a{
+    font-size: 1rem;
+    padding: 0px 7px;
+    padding-bottom: 8px;
+  }
+  
+  #navbar .logo img{
+    height: 75px;
+    width: 100px;
+  }
+  
+  /*Menu Page CSS*/
+  
+  #course-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 3px 200px;
+    height: 740px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #course-menu::before {
+    content: "";
+    background: url(../Pictures/bgmenu.jpg) no-repeat center center/cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 968px;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.95;
+  }
+  
+  #course-menu h1{
+    color: white;
+    font-size:3rem;
+    display: block;
+    width: 80%;
+    background-color: gray;
+    border-radius:30px;
+    padding: 10px 10px;
+    text-align: center;
+  }
+  
+  .course{
+    font-size: 1.8rem;
+    margin: 5px;
+  }
+  
+  .course a{
+    color: black;
+    background-color: gold;
+    display: block;
+    width:400px;
+    height:60px;
+    padding: 10px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+  }
+  
+  .course a:hover{
+    color: black;
+    background-color: lightgoldenrodyellow;
+  }
+  
+  .course-head a{
+    color: white;
+    font-size:3rem;
+    display: block;
+    width: 80%;
+    background-color: gray;
+    border-radius:30px;
+    padding: 10px 10px;
+  }
+  
+  .course-head a:hover{
+    color: white;
+    font-size:3rem;
+    display: block;
+    width: 80%;
+    background-color: lightgray;
+    border-radius:30px;
+    padding: 10px 10px;
+  }
+  
+  .course-menu .item{
+    color: black;
+    background-color: gold;
+    margin:10px;
+    display: block;
+    width:300px;
+    height:40px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size:1.4rem;
+  }
+  
+  #northindian{
+    background: url(../Pictures/bread-with-soup.jpg) no-repeat center center/cover;
+  }
+  
+  #southindian{
+    background: url(../Pictures/south-indian.jpeg) no-repeat center center/cover;
+  }
+  
+  #italian{
+    background: url(../Pictures/italian.jpeg) no-repeat center center/cover;
+  }
+  
+  #asian{
+    background: url(../Pictures/asian.jpeg) no-repeat center center/cover;
+  }
+  
+  #dessert{
+    background: url(../Pictures/pastry.jpg) no-repeat center center/cover;
+  }
+  
+  #cart{
+      position: fixed;
+      bottom:10px;
+      right: 10px;
+      display: block;
+      width:50px;
+      height:50px;
+      border-radius:25px;
+      background:url(../Pictures/cart.png) no-repeat center center/cover;
+  }
+  
+  #cartvalue{
+      color: white;
+      left:0;
+      top:0;
+      height:20px;
+      width:20px;
+      border-radius:10px;
+      background-color: red;
+      padding:1px 5px;
+  }
+  
+  .course{
+      cursor: pointer;
+  }
+  
+  .add{
+      float: right;
+      color: white;
+        font-size:1rem;
+        display: block;
+        background-color: blue;
+        border-radius:20px;
+        height:40px;
+        width:40px;
+        cursor: pointer;
+  }
+  
+  img {
+    height: 200px;
+    width: 300px;
+  } 
+  
+  #bill{
+      margin-top: 50px;
+  }
+  
+  #orderbtn{
+      font-size:1.3rem;
+      margin-right:10%;
+      margin-top: 30px;
+      float: right;
+      display: block;
+      border-radius:25px;
+      background-color: orange;
+      padding:10px 10px;
+  }
+  
+  #heading{
+      background-color: orange;
+      font-size: 1.4rem;
+  }
+  
+  #itemlist{
+      font-size:1.2rem;
+      background-color: lightgoldenrodyellow;
+  }
+  
+  #totalp{
+      font-size:1.2rem;
+      background-color: lightgoldenrodyellow;
+  }
+  
+  #order{
+      background:url(../Pictures/stir-fry-noodles.jpg) no-repeat center center/cover;
+  }
+  

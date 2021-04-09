@@ -1,0 +1,460 @@
+/* Whole Document */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navigation Bar */
+#navbar {
+  display: flex; /*Using FlexBox*/
+  align-items: center;
+  position: relative;
+  top: 0px;
+}
+
+/* Navigation Bar : Logo and Image */
+#logo {
+  margin: 8px 8px;
+}
+
+#logo img {
+  margin: 8px 8px;
+  height: "100px";
+  width: "150px";
+}
+
+/* Navigation Bar : List Styling */
+
+#navbar::before {
+  content: "";
+  background-color: lightgoldenrodyellow;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+#navbar ul {
+  display: flex;
+  font-family: "Baloo Bhai 2", cursive;
+}
+
+#navbar ul li {
+  list-style: none;
+  font-size: 1.4rem;
+  margin: 5px;
+}
+
+#navbar ul li a {
+  color: black;
+  background-color: gold;
+  display: block;
+  padding: 10px 10px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+#navbar ul li a:hover {
+  color: black;
+  background-color: lightgoldenrodyellow;
+}
+
+/* Home Section */
+
+#home {
+  display: flex;
+  flex-direction: column;
+  padding: 3px 200px;
+  height: 645px;
+  justify-content: center;
+  align-items: center;
+}
+
+#home::before {
+  content: "";
+  background: url(../Pictures/background.jpg) no-repeat center center/cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.95;
+}
+
+#home h1 {
+  color: white;
+  text-align: center;
+  font-family: "Bree Serif", serif;
+}
+
+#home p {
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Bree Serif", serif;
+}
+
+/* Services (Special Dishes) Section */
+
+#services {
+  margin: 25px;
+  display: flex;
+}
+
+#services .box {
+  border: 2px solid brown;
+  margin: 2px;
+  border-radius: 10px;
+  background: #fad265;
+}
+
+#services .box img {
+  height: 290px;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#services .box p {
+  font-family: "Bree Serif", serif;
+}
+
+/* Utility Class (Headings and Paragraphs) */
+
+.h-primary {
+  font-family: "Bree Serif", serif;
+  font-size: 3.5rem;
+  padding: 15px;
+}
+
+.h-secondary {
+  font-family: "Bree Serif", serif;
+  font-size: 2.5rem;
+  padding: 15px;
+}
+
+.btn {
+  padding: 10px 25px;
+  border: 3px solid orange;
+  background-color: gold;
+  color: whitesmoke;
+  margin: 20px;
+  font-size: 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.center {
+  text-align: center;
+}
+
+/* Footer Part */
+
+.footer-area {
+  padding-top: 50px;
+  padding-bottom: 0px;
+}
+
+.bg-f {
+  background-image: url("../Pictures/footer-bg.jpg");
+  background-attachment: scroll;
+  background-clip: initial;
+  background-color: rgba(0, 0, 0, 0);
+  background-origin: initial;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.bg-f::before {
+  background: #010101;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.footer-area .container {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-area h3 {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(207, 166, 113, 0.5);
+  margin-bottom: 10px;
+}
+
+.footer-area p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+.arrow-right {
+  position: relative;
+}
+
+.arrow-right::before {
+  content: "\f101";
+  font-family: "FontAwesome";
+  position: absolute;
+  right: 0px;
+  top: 0;
+  color: #fff;
+  font-size: 60px;
+  line-height: 60px;
+}
+
+.footer-area p.lead {
+  font-size: 19px;
+  color: #ffffff;
+  margin-bottom: 0px;
+}
+
+.footer-area p.lead a {
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.footer-area p.lead a:hover {
+  color: #d65106;
+}
+
+.footer-area p a {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.footer-area p a:hover {
+  color: #d65106;
+}
+
+.subscribe_form {
+  display: block;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.subscribe_form .form_input {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid #ffffff;
+  color: #fff;
+  font-size: 14px;
+  line-height: 50px;
+  padding: 0 10px;
+  float: left;
+  font-weight: 300;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+.subscribe_form .submit {
+  background-color: #d65106;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 50px;
+  display: inline-block;
+  padding: 0 10px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.subscribe_form .submit:hover {
+  background: #f3ab0f;
+}
+
+.copyright {
+  margin-top: 20px;
+  position: relative;
+  display: block;
+  background-color: #010101;
+  border-top: 1px solid rgba(207, 166, 113);
+  padding: 30px 0;
+  z-index: 1;
+}
+
+.copyright .company-name {
+  font-size: 16px;
+  text-align: center;
+}
+
+.copyright .company-name a {
+  font-size: 16px;
+}
+/*Footer Ends*/
+
+/* ------------------------------------------------------------*/
+/*For Contact Us Page*/
+
+.top_contact {
+  background: url("../Pictures/contact_us.jpg") no-repeat center center/cover;
+ 
+  background-repeat: no-repeat;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-attachment: fixed;
+  background-size: contain;
+  background-position: 0 0;
+  background-color: lightgoldenrodyellow;
+  
+}
+.message {
+  position: absolute;
+ 
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 5px 3px white;
+}
+.message .container .row .col-lg-12 h3 {
+  font-size: 12px;
+  text-shadow: 0px 1px white;
+}
+
+.container {
+  padding-bottom: 30px;
+}
+.wrapper {
+  position: absolute;
+  width: 100%;
+  max-width: 450px;
+}
+
+.wrapper h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.wrapper .input_field,
+.wrapper .abt_us_btn {
+  margin-bottom: 10px;
+  padding-right: 18px;
+}
+/* CSS for input elements*/
+.wrapper .input_field input[type="text"],
+.wrapper .input_field input[type="email"],
+.wrapper .input_field textarea {
+  width: 100%;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+}
+/* CSS for Text Area of form */
+.wrapper .input_field textarea {
+  height: 80px;
+  resize: none;
+}
+/* CSS for Submit button of form */
+.wrapper .abt_us_btn input[type="submit"] {
+  border: 0;
+  margin-top: 10px;
+
+  padding: 8px;
+  width: 100%;
+  background: rgb(32, 32, 221);
+  padding-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+/*error message  */
+.wrapper #error_message {
+  margin-bottom: 20px;
+
+  background: #fe8b8e;
+  text-align: center;
+  font-size: 14px;
+  transition: all 0.5% ease;
+
+  margin-right: 18px;
+}
+/*  Media Query*/
+@media (max-width: 770px) {
+  .wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 790px) {
+  .top_contact {
+    height: 200px;
+    background-position: 0 100px;
+    width: 100%;
+    height: 150px;
+
+    background-size: contain;
+    background-attachment: fixed;
+  }
+  .message .container .row .col-lg-12 h1 {
+    font-size: 30px;
+  }
+  * {
+    font-size: 15px;
+  }
+ 
+  .wrapper h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 490px) {
+  .top_contact {
+    position: relative;
+    width: 100%;
+    
+   background-attachment: fixed;
+    background-size: contain;
+    background-position: 0 150px;
+  
+    height: 30vh;
+  }
+  .message .container .row .col-lg-12 h1 {
+    padding-top:10px;
+  }
+}
+@media(max-width:400px){
+  .top_contact{
+    background-position: 0 150px;
+    
+  }
+}
+/* @media(max-width:490px){
+  .top_contact{
+    padding:25px 0 25px; 
+    height: 50;
+    background-position: 0 75px;
+  }
+ }*/
+
+/* end of css for contact us page*/
+
+/*-------------------------------------------------------*/

@@ -1,0 +1,51 @@
+/* Navigation */
+#navbar{
+    flex-direction: column;
+}
+
+#navbar ul li a{
+    font-size: 1rem;
+    padding: 0px 7px;
+    padding-bottom: 8px;
+}
+
+/* Home Section */
+#home{
+    height: 532px;
+    flex-direction: column;
+    padding: 5px 20px;
+}
+
+#home::before{
+    height: 700px;
+}
+
+#home p{
+    font-size: 13px;
+}
+
+
+/* Special Dishes Section */
+#services{
+    flex-direction: column;
+}
+
+#services .box img{
+    height: auto;
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 270px;
+}
+
+/* Utility Classes */
+.h-primary{
+    font-size: 26px;;
+}
+
+.btn{
+    font-size: 16px;
+    padding: 6px 10px;
+}

@@ -1,0 +1,129 @@
+/*About us*/
+  
+  .background {
+   background-color: lightgoldenrodyellow;
+  }
+  
+  #about_us {
+    display: flex;
+    flex-direction: column;
+    height: 615px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #about_us::before {
+    content: "";
+    background: url(../Pictures/about_us.jpg) no-repeat center center/cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.95;
+  }
+
+  #about_us h1 {
+    color: white;
+    text-align: center;
+    font-family: "Bree Serif", serif;
+    font-size: 7.5rem;
+  }
+  
+  #about_us p {
+    color: white;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: "Bree Serif", serif;
+  }
+
+  #about_us_2 {
+    display: flex;
+    flex-direction: column;
+    padding: 3px 200px;
+    height: 800px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #about_us_2 p {
+    color: black;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: "Bree Serif", serif;
+  }
+
+  /* Media Query*/
+
+  @media(max-width:1510px){
+
+    #navbar{
+      flex-direction: column;
+    }
+
+    #navbar ul li a{
+      font-size: 2rem;
+      padding: 0px 7px;
+      padding-bottom: 8px;
+    }
+
+    #about_us h1{
+      font-size: 5rem;
+    }
+
+    #about_us p{
+      font-size: 2rem;  
+      
+    }
+    
+    #about_us_2 p{
+      font-size: 1.5rem;
+    }
+
+  }
+
+  @media(max-width:900px) {
+
+    #navbar ul li a{
+      font-size: 1rem;
+    }
+
+    #about_us h1{
+      font-size: 3rem;
+    }
+
+    #about_us p{
+      font-size: 1.5rem;
+    }
+
+    #about_us_2{
+      padding: 0px 50px;
+      height: 600px;
+    }
+
+    #about_us_2 p{
+      font-size: 1.25rem;
+      text-align: justify;
+      background-color: wheat;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+  }
+  @media(max-width:355px) {
+    #navbar ul li a{
+      margin: 0px;
+      font-size: 0.7rem;
+    }
+    #about_us::before{
+      height: 70%;
+    }
+    #about_us p{
+      font-size: 1rem;
+    }
+    #about_us_2{
+      padding:0px;
+    }
+
+  } 
