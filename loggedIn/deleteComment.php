@@ -50,47 +50,30 @@
             include '../Pages/utility.php';
             //$_SESSION variables become available on this page
             session_start();
-            // $_SESSION['message'] = '';
-            // $mysqli = new mysqli('localhost','root','','forum');
-            // $username =  $_SESSION['username'];
-            // echo $username;
-            $str = "SELECT * from threads where threadId = $_GET[id]";
+            $username = $_SESSION['username'];
+            $str = "SELECT id from users where username = '$username'";
             $result=ExecuteQuery($str);
-            $noRows = mysqli_num_rows($result);
-            while($row = mysqli_fetch_assoc($result)){
-                    $topic = $row['topic'];
-                    echo "<h1>";
-                    echo $topic;
-                    echo "</h1>";
-                    echo "<a href = 'addComment.php?id=$_GET[id]'> Add a new Comment </a>";
-                    echo "<p><a href='deleteThread.php?id=$row[threadId]'>";
-                    echo "Delete</a></p>";
-                    echo"<br/><br/>";
-                    $summary = $row['summary'];
-                    echo $summary;
-                    echo "<br/><br/><br/>";
-                    $tDateTime = $row['tDateTime'];
-                    echo $tDateTime;
-                    echo "<br/><br/>";
-                    $tag = $row['tag'];
-                    echo $tag;
+            
+            // $no_rows = mysqli_num_rows($result);
+            $row = mysqli_fetch_assoc($result);
+
+            $userId = $row['id'];   
+            // got userId
+            $commentId =  $_GET['id'];
+            $str = "SELECT * from comments where userId = $userId and commentId = $commentId";
+            $result=ExecuteQuery($str);
+            $no_rows = mysqli_num_rows($result);
+            
+            if($no_rows > 0){
+               
+                echo "<h1>Are you sure you want to delete this Thread ? <h1>";
+                echo "<a href = 'deleteCommentYes.php?id=$_GET[id]'>Yes</a>";
+                echo "<a href = 'myComments.php?id=$_GET[id]'>     No</a>";
+            
+            }else{
+                echo "<h1>You are not authorised to Delete This!<h1>";
             }
-            echo "<h1> Comments </h1>";
-                 
-            $str = "SELECT * from comments where threadId = $_GET[id]";
-            $result=ExecuteQuery($str);
-            while($row = mysqli_fetch_assoc($result)){
-                
-                $description = $row['description'];
-                echo $description;
-                echo "<br/>";
-                $cDateTime = $row['cDateTime'];
-                echo $cDateTime;
-                echo "<span style='color:red'><a href='deleteComment.php?id=$row[commentId]'>";
-                echo "    Delete this comment</a></span>";
-                echo "<br/><br/>";
-                
-          }
+             
         ?>
     </div>
     </div>

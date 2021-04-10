@@ -79,7 +79,10 @@
                     $topic = $row['topic'];
                     echo "<h1><a href='threadView.php?id=$row[threadId]'>";
                     echo $topic;
-                    echo "</a></h1><br/><br/>";
+                    echo "</a></h1>";
+                    echo "<span style='color:red'><a href='deleteThread.php?id=$row[threadId]'>";
+                    echo "Delete</a></span>";
+                    echo "<br/><br/>";
                     $summary = $row['summary'];
                     echo $summary;
                     echo "<br/><br/><br/>";

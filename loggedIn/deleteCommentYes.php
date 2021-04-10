@@ -50,47 +50,24 @@
             include '../Pages/utility.php';
             //$_SESSION variables become available on this page
             session_start();
-            // $_SESSION['message'] = '';
-            // $mysqli = new mysqli('localhost','root','','forum');
-            // $username =  $_SESSION['username'];
-            // echo $username;
-            $str = "SELECT * from threads where threadId = $_GET[id]";
+            $username = $_SESSION['username'];
+            $str = "SELECT id from users where username = '$username'";
             $result=ExecuteQuery($str);
-            $noRows = mysqli_num_rows($result);
-            while($row = mysqli_fetch_assoc($result)){
-                    $topic = $row['topic'];
-                    echo "<h1>";
-                    echo $topic;
-                    echo "</h1>";
-                    echo "<a href = 'addComment.php?id=$_GET[id]'> Add a new Comment </a>";
-                    echo "<p><a href='deleteThread.php?id=$row[threadId]'>";
-                    echo "Delete</a></p>";
-                    echo"<br/><br/>";
-                    $summary = $row['summary'];
-                    echo $summary;
-                    echo "<br/><br/><br/>";
-                    $tDateTime = $row['tDateTime'];
-                    echo $tDateTime;
-                    echo "<br/><br/>";
-                    $tag = $row['tag'];
-                    echo $tag;
-            }
-            echo "<h1> Comments </h1>";
-                 
-            $str = "SELECT * from comments where threadId = $_GET[id]";
+            
+            // $no_rows = mysqli_num_rows($result);
+            $row = mysqli_fetch_assoc($result);
+
+            $userId = $row['id'];   
+            // got userId
+            $commentId =  $_GET['id'];
+            
+            
+            $str = "Delete from comments where commentId = $commentId and userId = $userId";
             $result=ExecuteQuery($str);
-            while($row = mysqli_fetch_assoc($result)){
-                
-                $description = $row['description'];
-                echo $description;
-                echo "<br/>";
-                $cDateTime = $row['cDateTime'];
-                echo $cDateTime;
-                echo "<span style='color:red'><a href='deleteComment.php?id=$row[commentId]'>";
-                echo "    Delete this comment</a></span>";
-                echo "<br/><br/>";
-                
-          }
+           
+            echo "Comment Deleted Successfully!";
+            echo "<a href = 'home.php'>Click Here</a>";
+             
         ?>
     </div>
     </div>

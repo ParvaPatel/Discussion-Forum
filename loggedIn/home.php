@@ -57,20 +57,32 @@
             $str = "SELECT * from threads";
             $result=ExecuteQuery($str);
             $noRows = mysqli_num_rows($result);
+
+
             while($row = mysqli_fetch_assoc($result)){
+
+
                   $topic = $row['topic'];
                   echo "<h1><a href='threadView.php?id=$row[threadId]'>";
                   echo $topic;
-                  echo "</a></h1><br/><br/>";
+                  echo "</a></h1>";
+                  echo "<span style='color:red'><a href='deleteThread.php?id=$row[threadId]'>";
+                  echo "Delete</a></span>";
+                  echo "<br/><br/>";
                   $summary = $row['summary'];
                   echo $summary;
                   echo "<br/><br/><br/>";
                   $tDateTime = $row['tDateTime'];
                   echo $tDateTime;
-                  echo "<br/><br/>";
+                  echo "</br>";
                   $tag = $row['tag'];
                   echo $tag;
+
+
             }
+
+
+
         ?>
     </div>
     </div>
