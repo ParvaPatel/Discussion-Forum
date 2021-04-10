@@ -40,3 +40,34 @@ CREATE TABLE IF NOT EXISTS `comments` (
   FOREIGN KEY (userId) REFERENCES users(id) ,
   FOREIGN KEY (threadId) REFERENCES threads(threadId) 
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `commentId` int(11) NOT NULL AUTO_INCREMENT,
+  `cDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `description` varchar(1000) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `threadId` int(11) NOT NULL,
+  `votes` int(11) NOT NULL,
+  PRIMARY KEY (`commentId`),
+  FOREIGN KEY (userId) REFERENCES users(id) ,
+  FOREIGN KEY (threadId) REFERENCES threads(threadId) 
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `voteThread` (
+  `voteThreadId` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `threadId` int(11) NOT NULL,
+  `voteValue` int(11) NOT NULL,
+  PRIMARY KEY (`voteThreadId`),
+  FOREIGN KEY (userId) REFERENCES users(id) ,
+  FOREIGN KEY (threadId) REFERENCES threads(threadId) 
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `voteComment` (
+  `voteCommentId` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `commentId` int(11) NOT NULL,
+  `voteValue` int(11) NOT NULL,
+  PRIMARY KEY (`voteCommentId`),
+  FOREIGN KEY (userId) REFERENCES users(id) ,
+  FOREIGN KEY (commentId) REFERENCES comments(commentId) 
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

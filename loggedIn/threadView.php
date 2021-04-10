@@ -50,6 +50,7 @@
             include '../Pages/utility.php';
             //$_SESSION variables become available on this page
             session_start();
+            require 'voteThread.php';
             // $_SESSION['message'] = '';
             // $mysqli = new mysqli('localhost','root','','forum');
             // $username =  $_SESSION['username'];
@@ -57,14 +58,25 @@
             $str = "SELECT * from threads where threadId = $_GET[id]";
             $result=ExecuteQuery($str);
             $noRows = mysqli_num_rows($result);
+            
             while($row = mysqli_fetch_assoc($result)){
                     $topic = $row['topic'];
                     echo "<h1>";
                     echo $topic;
                     echo "</h1>";
+                    
+                    $noRows = $row['votes'];
+
+                    echo "Net Votes : ";
+                    echo $noRows;
+                    echo "</br>";
                     echo "<a href = 'addComment.php?id=$_GET[id]'> Add a new Comment </a>";
                     echo "<p><a href='deleteThread.php?id=$row[threadId]'>";
                     echo "Delete</a></p>";
+                    echo"<form class='form' action='threadView.php?id=$_GET[id]' method='post' enctype='multipart/form-data' autocomplete='off'>
+                    <input type='submit' value='Upvote' name='vote' class='btn btn-block btn-primary' />
+                    <input type='submit' value='Downvote' name='vote' class='btn btn-block btn-primary' />
+                    </form>";
                     echo"<br/><br/>";
                     $summary = $row['summary'];
                     echo $summary;
@@ -88,6 +100,16 @@
                 echo $cDateTime;
                 echo "<span style='color:red'><a href='deleteComment.php?id=$row[commentId]'>";
                 echo "    Delete this comment</a></span>";
+                $noRows = $row['votes'];
+
+                echo "Net Votes : ";
+                echo $noRows;
+                $commentId = $row['commentId'];
+                echo"<form class='form' action='threadView.php?id=$_GET[id]' method='post' enctype='multipart/form-data' autocomplete='off'>
+                    <input type='submit' value='Up' name='vote' class='btn btn-block btn-primary' />
+                    <input type='submit' value='Down' name='vote' class='btn btn-block btn-primary' />
+                    <input type='hidden' name='commentId' value=$commentId>
+                    </form>";
                 echo "<br/><br/>";
                 
           }
@@ -96,7 +118,7 @@
     </div>
 
     <!-- Start Footer -->
-    <footer class="footer-area bg-f">
+    <!-- <footer class="footer-area bg-f">
       <div class="copyright">
         <div class="container">
           <div class="row">
@@ -111,7 +133,14 @@
         </div>
       </div>
     </footer>
-    <!-- End Footer -->
+    End Footer -->
    
   </body>
 </html>
+
+
+
+
+
+
+

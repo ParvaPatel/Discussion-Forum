@@ -91,7 +91,12 @@
                     $topic = $row['topic'];
                     echo "<h1><a href='threadView.php?id=$row[threadId]'>";
                     echo $topic;
-                    echo "</a></h1><br/><br/>";
+                    echo "</a></h1>";
+                    $noRows = $row['votes'];
+
+                    echo "Net Votes : ";
+                    echo $noRows;
+                    echo "</br>";
                     $summary = $row['summary'];
                     echo $summary;
                     echo "<br/><br/><br/>";
