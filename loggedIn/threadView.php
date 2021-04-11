@@ -72,7 +72,10 @@
                     echo "</br>";
                     echo "<a href = 'addComment.php?id=$_GET[id]'> Add a new Comment </a>";
                     echo "<p><a href='deleteThread.php?id=$row[threadId]'>";
-                    echo "Delete</a></p>";
+                    echo "Delete</a>";
+                    echo "<a href='updateThread.php?id=$row[threadId]'>";
+                    echo "Update</a></p>";
+                   
                     echo"<form class='form' action='threadView.php?id=$_GET[id]' method='post' enctype='multipart/form-data' autocomplete='off'>
                     <input type='submit' value='Upvote' name='vote' class='btn btn-block btn-primary' />
                     <input type='submit' value='Downvote' name='vote' class='btn btn-block btn-primary' />
@@ -98,11 +101,13 @@
                 echo "<br/>";
                 $cDateTime = $row['cDateTime'];
                 echo $cDateTime;
-                echo "<span style='color:red'><a href='deleteComment.php?id=$row[commentId]'>";
-                echo "    Delete this comment</a></span>";
+                echo "<a href='deleteComment.php?id=$row[commentId]'>";
+                echo "    Delete comment</a>";
+                echo "<a href='updateComment.php?id=$row[commentId]'>";
+                echo "    Update comment</a>";
                 $noRows = $row['votes'];
 
-                echo "Net Votes : ";
+                echo "</br>Net Votes : ";
                 echo $noRows;
                 $commentId = $row['commentId'];
                 echo"<form class='form' action='threadView.php?id=$_GET[id]' method='post' enctype='multipart/form-data' autocomplete='off'>

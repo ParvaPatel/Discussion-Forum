@@ -60,11 +60,14 @@
             $userId = $row['id'];   
             // got userId
             $commentId =  $_GET['id'];
-            
-            
-            $str = "Delete from comments where commentId = $commentId and userId = $userId";
+            // echo $commentId;
+            // echo $userId;
+            // die();
+            $str = "DELETE from votecomment where commentId = $commentId";
             $result=ExecuteQuery($str);
-           
+            $str = "DELETE from comments where commentId = $commentId";
+            $result=ExecuteQuery($str);
+
             echo "Comment Deleted Successfully!";
             echo "<a href = 'home.php'>Click Here</a>";
              

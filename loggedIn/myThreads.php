@@ -85,8 +85,10 @@
                     echo "Net Votes : ";
                     echo $noRows;
                     echo "</br>";
-                    echo "<span style='color:red'><a href='deleteThread.php?id=$row[threadId]'>";
-                    echo "Delete</a></span>";
+                    echo "<p><a href='deleteThread.php?id=$row[threadId]'>";
+                    echo "Delete</a>";
+                    echo "<a href='updateThread.php?id=$row[threadId]'>";
+                    echo "Update</a></p>";
                     echo "<br/><br/>";
                     $summary = $row['summary'];
                     echo $summary;

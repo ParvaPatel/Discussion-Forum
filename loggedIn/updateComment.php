@@ -66,12 +66,12 @@
             
             if($no_rows > 0){
                
-                echo "<h1>Are you sure you want to delete this Comment ? <h1>";
-                echo "<a href = 'deleteCommentYes.php?id=$_GET[id]'>Yes</a>";
+                echo "<h1>Are you sure you want to update this Comment ? <h1>";
+                echo "<a href = 'updateCommentYes.php?id=$_GET[id]'>Yes</a>";
                 echo "<a href = 'myComments.php'>     No</a>";
             
             }else{
-                echo "<h1>You are not authorised to Delete This!<h1>";
+                echo "<h1>You are not authorised to Update This!<h1>";
             }
              
         ?>

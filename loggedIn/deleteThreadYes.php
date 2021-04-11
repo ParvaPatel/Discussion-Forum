@@ -61,7 +61,8 @@
             // got userId
             $threadId =  $_GET['id'];
             
-            
+            $str = "Delete from votethread where threadId = $threadId";
+            $result=ExecuteQuery($str);
             $str = "Delete from comments where threadId = $threadId";
             $result=ExecuteQuery($str);
             $str = "Delete from threads where userId = $userId and threadId = $threadId";

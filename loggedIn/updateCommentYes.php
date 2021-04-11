@@ -43,40 +43,51 @@
         </ul>
       </div>
     </nav>
+    
+    <?php 
+        session_start();
+        $_SESSION['message']='';
+        // $_SESSION['threadId']=$_GET[id];
+        $mysqli = new mysqli('localhost','root','','forum');
+        require 'updateCommentValidate.php'; 
+        
+        $username =  $_SESSION['username'];         
+        $str = "SELECT id from users where username = '$username'";
+        $result=ExecuteQuery($str);
+        $row = mysqli_fetch_assoc($result);
+        $userId = $row['id'];
+
+        $commentId = $_GET['id'];
+
+        $sql = "SELECT * FROM comments where userId = $userId and commentId = $commentId";
+
+        $result = ExecuteQuery($sql);
+        $row = mysqli_fetch_assoc($result);
+        $description = $row['description'];
+        
+        // echo $description;
+        // die();
+    ?>
+        
+
+
 
     <div class="body-content">
         <div class="module">
-        <?php 
-            include '../Pages/utility.php';
-            //$_SESSION variables become available on this page
-            session_start();
-            $username = $_SESSION['username'];
-            $str = "SELECT id from users where username = '$username'";
-            $result=ExecuteQuery($str);
-            
-            // $no_rows = mysqli_num_rows($result);
-            $row = mysqli_fetch_assoc($result);
+            <h1>Update this Comment</h1>
+            <form class="form" action="updateCommentYes.php?id=<?php echo $commentId;?>" method="post" enctype="multipart/form-data" autocomplete="off">
+            <div class="alert alert-error"><?= $_SESSION['message'] ?></div>
+            <input type="text" placeholder="Description" name="description" value = "<?php echo $row['description'];?>" required />
+            <input type="submit" value="Update  Comment" name="updateComment" class="btn btn-block btn-primary" />
 
-            $userId = $row['id'];   
-            // got userId
-            $commentId =  $_GET['id'];
-            $str = "SELECT * from comments where userId = $userId and commentId = $commentId";
-            $result=ExecuteQuery($str);
-            $no_rows = mysqli_num_rows($result);
-            
-            if($no_rows > 0){
-               
-                echo "<h1>Are you sure you want to delete this Comment ? <h1>";
-                echo "<a href = 'deleteCommentYes.php?id=$_GET[id]'>Yes</a>";
-                echo "<a href = 'myComments.php'>     No</a>";
-            
-            }else{
-                echo "<h1>You are not authorised to Delete This!<h1>";
-            }
-             
-        ?>
+            <input type="hidden" value="<?php echo $_GET["id"] ?>" name="commentId"  />
+            </form>
+            <!-- <textarea name="summary" placeholder="Summary" form="usrform">Enter text here...</textarea> -->
+        </div>
     </div>
-    </div>
+
+
+
 
     <!-- Start Footer -->
     <footer class="footer-area bg-f">

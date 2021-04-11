@@ -44,40 +44,47 @@
       </div>
     </nav>
 
-    <div class="body-content">
-        <div class="module">
-        <?php 
-            include '../Pages/utility.php';
-            //$_SESSION variables become available on this page
-            session_start();
-            $username = $_SESSION['username'];
-            $str = "SELECT id from users where username = '$username'";
-            $result=ExecuteQuery($str);
-            
-            // $no_rows = mysqli_num_rows($result);
-            $row = mysqli_fetch_assoc($result);
+    <?php 
+        session_start();
+        require 'updateThreadValidate.php'; 
+        $_SESSION['message']='';
 
-            $userId = $row['id'];   
-            // got userId
-            $commentId =  $_GET['id'];
-            $str = "SELECT * from comments where userId = $userId and commentId = $commentId";
-            $result=ExecuteQuery($str);
-            $no_rows = mysqli_num_rows($result);
-            
-            if($no_rows > 0){
-               
-                echo "<h1>Are you sure you want to delete this Comment ? <h1>";
-                echo "<a href = 'deleteCommentYes.php?id=$_GET[id]'>Yes</a>";
-                echo "<a href = 'myComments.php'>     No</a>";
-            
-            }else{
-                echo "<h1>You are not authorised to Delete This!<h1>";
-            }
-             
+        $username =  $_SESSION['username'];         
+        $str = "SELECT id from users where username = '$username'";
+        $result=ExecuteQuery($str);
+        $row = mysqli_fetch_assoc($result);
+        $userId = $row['id'];
+
+        $threadId = $_GET['id'];
+
+        $sql = "SELECT * FROM threads where userId = $userId and threadId = $threadId";
+
+        $result = ExecuteQuery($sql);
+        
+        $row = mysqli_fetch_assoc($result);
+        // $topic = $row['topic'];
+        // $summary = $row['summary'];
+        // $tag = $row['tag'];
+        // echo $topic;
+        // echo $summary;
+        // echo $tag;
+        // die();
         ?>
-    </div>
-    </div>
+    
 
+        <div class="body-content">
+        <div class="module">
+            <h1>Update this Thread</h1>
+            <form class="form" action="updateThreadYes.php?id=<?php echo $threadId;?>" method="post" enctype="multipart/form-data" autocomplete="off">
+            <div class="alert alert-error"><?= $_SESSION['message'] ?></div>
+            <input type="text" placeholder="topic" name="topic" value = "<?php echo $row['topic'];?>" required />
+            <input type="text" placeholder="Summary" name="summary" value = "<?php echo $row['summary'];?>" required />
+            <input type="text" placeholder="Tag" name="tag" value = "<?php echo $row['tag'];?>" required />
+            <input type="submit" value="Update this Thread" name="updateThread" class="btn btn-block btn-primary" />
+            </form>
+            <!-- <textarea name="summary" placeholder="Summary" form="usrform">Enter text here...</textarea> -->
+        </div>
+    </div>
     <!-- Start Footer -->
     <footer class="footer-area bg-f">
       <div class="copyright">

@@ -59,19 +59,19 @@
 
             $userId = $row['id'];   
             // got userId
-            $commentId =  $_GET['id'];
-            $str = "SELECT * from comments where userId = $userId and commentId = $commentId";
+            $threadId =  $_GET['id'];
+            $str = "SELECT * from threads where userId = $userId and threadId = $threadId";
             $result=ExecuteQuery($str);
             $no_rows = mysqli_num_rows($result);
             
             if($no_rows > 0){
                
-                echo "<h1>Are you sure you want to delete this Comment ? <h1>";
-                echo "<a href = 'deleteCommentYes.php?id=$_GET[id]'>Yes</a>";
-                echo "<a href = 'myComments.php'>     No</a>";
+                echo "<h1>Are you sure you want to update this Thread ? <h1>";
+                echo "<a href = 'updateThreadYes.php?id=$_GET[id]'>Yes</a>";
+                echo "<a href = 'threadView.php?id=$_GET[id]'>     No</a>";
             
             }else{
-                echo "<h1>You are not authorised to Delete This!<h1>";
+                echo "<h1>You are not authorised to Update This!<h1>";
             }
              
         ?>
@@ -98,3 +98,4 @@
    
   </body>
 </html>
+
