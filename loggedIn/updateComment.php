@@ -51,20 +51,21 @@
             //$_SESSION variables become available on this page
             session_start();
             $username = $_SESSION['username'];
-            $str = "SELECT id from users where username = '$username'";
-            $result=ExecuteQuery($str);
-            
-            // $no_rows = mysqli_num_rows($result);
-            $row = mysqli_fetch_assoc($result);
 
+            $str = "SELECT extractUserId('$username') as id";
+            $result=ExecuteQuery($str);
+            $row = mysqli_fetch_assoc($result);
             $userId = $row['id'];   
+
             // got userId
             $commentId =  $_GET['id'];
-            $str = "SELECT * from comments where userId = $userId and commentId = $commentId";
+            // $str = "SELECT * from comments where userId = $userId and commentId = $commentId";
+            $str = "SELECT checkCommentAutho($userId,$commentId) as noRows";
             $result=ExecuteQuery($str);
-            $no_rows = mysqli_num_rows($result);
+            $row = mysqli_fetch_assoc($result);
+            $noRows = $row['noRows'];   
             
-            if($no_rows > 0){
+            if($noRows > 0){
                
                 echo "<h1>Are you sure you want to update this Comment ? <h1>";
                 echo "<a href = 'updateCommentYes.php?id=$_GET[id]'>Yes</a>";

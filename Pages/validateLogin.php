@@ -5,39 +5,27 @@
         $email = $mysqli->real_escape_string($_POST['email']);
         //md5 hash password for security
         $password = md5($_POST['password']);
-        $str="SELECT * FROM users where username = '$username' and email = '$email' and password = '$password'";
+        // $str="SELECT * FROM users where username = '$username' and email = '$email' and password = '$password'";
+        $str = "SELECT loginUser('$username','$email','$password') as noRows";
         $result=ExecuteQuery($str);
-        $no_rows = mysqli_num_rows($result);
-        // print_r($password);
-        // print_r($username);
-        // print_r($email);
-        // print_r($result);
+        // $no_rows = mysqli_num_rows($result);
+        $row = mysqli_fetch_assoc($result);
+        $noRows = $row['noRows'];
+        // echo $noRows;
         // die();
-        if($no_rows < 1){
-            $_SESSION['message'] = 'Invalid Credentials';
-            // print_r("In a Invalid");
-            // while($usersData = mysqli_fetch_array($result)){
-            //     print_r($usersData);
-            // }
-            // die();  
+        if($noRows < 1){
+            $_SESSION['message'] = 'Invalid Credentials';  
         }
         
-        else{
-            // print_r("In a Valid");
-            // while($usersData = mysqli_fetch_array($result)){
-            //     print_r($usersData);
-            // }
-            // die(); 
+        else{   
             session_start();
             $_SESSION['username'] = $username;
             $_SESSION['loggedin'] = true;
-            // print_r($_SESSION['username']);
-            // print_r($_SESSION['loggedin']);
-            // die();
-            header("location: ../loggedIn/home.php");
-
+            if($username == 'admin'){
+                header("location: ../admin/home.php");
+            }else{
+                header("location: ../loggedIn/home.php");
+            }
         }
-    }
-           
+    }   
 ?>
-<!-- 25f9e794323b453885f5181f1b624d0b -->

@@ -50,28 +50,12 @@
             include '../Pages/utility.php';
             //$_SESSION variables become available on this page
             session_start();
-            $username = $_SESSION['username'];
-            $str = "SELECT extractUserId('$username') as id";
-            $result=ExecuteQuery($str);
-            $row = mysqli_fetch_assoc($result);
-            $userId = $row['id'];     
-            // got userId
-            $threadId =  $_GET['id'];
-            // $str = "SELECT * from threads where userId = $userId and threadId = $threadId";
-            $str = "SELECT checkThreadAutho($userId,$threadId) as noRows";
-            $result=ExecuteQuery($str);
-            $row = mysqli_fetch_assoc($result);
-            $noRows = $row['noRows'];  
+           
+            echo "<h1>Are you sure you want to update this Thread ? <h1>";
+            echo "<a href = 'updateThreadYes.php?id=$_GET[id]'>Yes</a>";
+            echo "<a href = 'threadView.php?id=$_GET[id]'>     No</a>";
             
-            if($noRows > 0){
-               
-                echo "<h1>Are you sure you want to update this Thread ? <h1>";
-                echo "<a href = 'updateThreadYes.php?id=$_GET[id]'>Yes</a>";
-                echo "<a href = 'threadView.php?id=$_GET[id]'>     No</a>";
-            
-            }else{
-                echo "<h1>You are not authorised to Update This!<h1>";
-            }
+           
              
         ?>
     </div>

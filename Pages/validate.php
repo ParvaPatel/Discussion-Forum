@@ -1,8 +1,8 @@
 <?php
     include 'utility.php';
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // print_r( $_POST ); die();
-            //two passwords are equal to each other
+
+        //two passwords are equal to each other
             if ($_POST['password'] == $_POST['confirmpassword']) {
                 
                 //define other variables with submitted values from $_POST
@@ -14,23 +14,15 @@
                 $password = md5($_POST['password']);
 
                 //path were our avatar image will be stored
-                $avatar_path = $mysqli->real_escape_string('images/'.$_FILES['avatar']['name']);
+                $avatar_path = $mysqli->real_escape_string('images/'.$_FILES['avatar']['name']);                
                 
-
-
-                // Validate users
-            
-               
-                    
-                    // while($usersData = mysqli_fetch_array($result)){
-                    //     print_r($usersData);
-                    // }
-                    // die();              
-                    
-                $str="SELECT * FROM users where username = '$username' or email = '$email'";
+                // $str="SELECT * FROM users where username = '$username' or email = '$email'";
+                $str = "SELECT checkUser('$username','$email') as noRows";
                 $result=ExecuteQuery($str);
-                $no_rows = mysqli_num_rows($result);
-                if($no_rows > 0){
+                // $noRows = mysqli_num_rows($result);
+                $row = mysqli_fetch_assoc($result);
+                $noRows = $row['noRows'];
+                if($noRows > 0){
                     $_SESSION['message'] = 'User Already Exit with this Credentials';
                 }
                 else{
@@ -45,9 +37,10 @@
                             $_SESSION['avatar'] = $avatar_path;
 
                             //insert user data into database
-                            $sql = 
-                            "INSERT INTO users (username, name,email, password, avatar) "
-                            . "VALUES ('$username','$name' ,'$email', '$password', '$avatar_path')";
+                            // $sql = 
+                            // "INSERT INTO users (username, name,email, password, avatar) "
+                            // . "VALUES ('$username','$name' ,'$email', '$password', '$avatar_path')";
+                            $sql = "CALL registerUser('$username','$name' ,'$email', '$password', '$avatar_path')";
                             
                             //check if mysql query is successful
                             if ($mysqli->query($sql) === true){

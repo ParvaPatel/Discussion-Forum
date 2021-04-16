@@ -51,13 +51,6 @@
         
     ?>
 
-
-
-
-
-
-
-
     <div class="body-content">
         <div class="module">
             <h1>Create an account</h1>

@@ -43,39 +43,36 @@
         </ul>
       </div>
     </nav>
+    
+    <?php 
+        session_start();
+        $_SESSION['message']='';
+        // $_SESSION['threadId']=$_GET[id];
+        $mysqli = new mysqli('localhost','root','','forum');
+        require 'validateComment.php'; 
+        
+        
+    ?>
+        
+
+
 
     <div class="body-content">
         <div class="module">
-        <?php 
-            include '../Pages/utility.php';
-            //$_SESSION variables become available on this page
-            session_start();
-            $username = $_SESSION['username'];
-            $str = "SELECT extractUserId('$username') as id";
-            $result=ExecuteQuery($str);
-            $row = mysqli_fetch_assoc($result);
-            $userId = $row['id'];     
-            // got userId
-            $threadId =  $_GET['id'];
-            // $str = "SELECT * from threads where userId = $userId and threadId = $threadId";
-            $str = "SELECT checkThreadAutho($userId,$threadId) as noRows";
-            $result=ExecuteQuery($str);
-            $row = mysqli_fetch_assoc($result);
-            $noRows = $row['noRows'];  
-            
-            if($noRows > 0){
-               
-                echo "<h1>Are you sure you want to update this Thread ? <h1>";
-                echo "<a href = 'updateThreadYes.php?id=$_GET[id]'>Yes</a>";
-                echo "<a href = 'threadView.php?id=$_GET[id]'>     No</a>";
-            
-            }else{
-                echo "<h1>You are not authorised to Update This!<h1>";
-            }
-             
-        ?>
+            <h1>Add New Comment</h1>
+            <form class="form" action="addComment.php" method="post" enctype="multipart/form-data" autocomplete="off">
+            <div class="alert alert-error"><?= $_SESSION['message'] ?></div>
+            <input type="text" placeholder="Description" name="description" required />
+            <input type="submit" value="Add this Comment" name="addComment" class="btn btn-block btn-primary" />
+
+            <input type="hidden" value="<?php echo $_GET["id"] ?>" name="threadId"  />
+            </form>
+            <!-- <textarea name="summary" placeholder="Summary" form="usrform">Enter text here...</textarea> -->
+        </div>
     </div>
-    </div>
+
+
+
 
     <!-- Start Footer -->
     <footer class="footer-area bg-f">
@@ -97,4 +94,3 @@
    
   </body>
 </html>
-

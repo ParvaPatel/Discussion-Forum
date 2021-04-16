@@ -51,20 +51,18 @@
             //$_SESSION variables become available on this page
             session_start();
             $username = $_SESSION['username'];
-            $str = "SELECT id from users where username = '$username'";
+            $str = "SELECT extractUserId('$username') as id";
             $result=ExecuteQuery($str);
-            
-            // $no_rows = mysqli_num_rows($result);
             $row = mysqli_fetch_assoc($result);
-
-            $userId = $row['id'];   
+            $userId = $row['id'];     
             // got userId
             $threadId =  $_GET['id'];
-            $str = "SELECT * from threads where userId = $userId and threadId = $threadId";
+            $str = "SELECT checkThreadAutho($userId,$threadId) as noRows";
             $result=ExecuteQuery($str);
-            $no_rows = mysqli_num_rows($result);
+            $row = mysqli_fetch_assoc($result);
+            $noRows = $row['noRows']; 
             
-            if($no_rows > 0){
+            if($noRows > 0){
                
                 echo "<h1>Are you sure you want to delete this Thread ? <h1>";
                 echo "<a href = 'deleteThreadYes.php?id=$_GET[id]'>Yes</a>";
