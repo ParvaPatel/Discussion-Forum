@@ -19,6 +19,8 @@
     <link rel="icon" href="../Pictures/logo.png" type="image/png" />
     <link rel="stylesheet" href="../CSS/preloader.css" />
     <link rel="stylesheet" href="../Pages/form.css" type="text/css"><!--css for preloader and news letter-->
+    <link rel="stylesheet" href="../CSS/box.css" type="text/css"/>  
+
   </head>
 <!--body-->
 <body>
@@ -44,8 +46,8 @@
       </div>
     </nav>
 
-    <div class="body-content">
-        <div class="module">
+    <!-- <div class="body-content">
+        <div class="module"> -->
         <?php 
             include '../Pages/utility.php';
             //$_SESSION variables become available on this page
@@ -63,37 +65,83 @@
             while($row = mysqli_fetch_assoc($result)){
 
 
-                  $topic = $row['topic'];
-                  echo "<h1><a href='threadView.php?id=$row[threadId]'>";
-                  echo $topic;
-                  echo "</a></h1>";
-                  $noRows = $row['votes'];
+              $userId = $row['userId'];
+              $str = "SELECT extractUsername($userId) as username";
+              $res=ExecuteQuery($str);
+              $temp = mysqli_fetch_assoc($res);
+              $username = $temp['username'];
+              // echo $username;
+              // die();
+              echo "<div class='comment-thread'>
+                <div class='comment' id='comment-1'>
+                    <div class='comment-heading'>
+                        <div class='comment-voting'>
+                            <a href = 'vote.php?vote=up&id=$row[threadId]'> 
+                            <button type='button'>
+                                <span aria-hidden='true'>&#9650;</span>
+                                <span class='sr-only'>Vote up</span>
+                            </button>
+                            </a>
+                            <a href = 'vote.php?vote=down&id=$row[threadId]'>
+                            <button type='button'>
+                                <span aria-hidden='true'>&#9660;</span>
+                                <span class='sr-only'>Vote down</span>
+                            </button>
+                            </a>
+                        </div>
+                        <div class='comment-info'>
 
-                  echo "Net Votes : ";
-                  echo $noRows;
-                  echo "</br>";
-                  echo "<p><a href='deleteThread.php?id=$row[threadId]'>";
-                  echo "Delete</a>";
-                  echo "<a href='updateThread.php?id=$row[threadId]'>";
-                  echo "Update</a></p>";
-                  echo "<br/><br/>";
-                  $summary = $row['summary'];
-                  echo $summary;
-                  echo "<br/><br/><br/>";
-                  $tDateTime = $row['tDateTime'];
-                  echo $tDateTime;
-                  echo "</br>";
-                  $tag = $row['tag'];
-                  echo $tag;
+                          <div class='s-1'>
 
+                            <a href='threadView.php?id=$row[threadId]' class='comment-author'>";
+              echo $row['topic'];
+              echo "</a> 
+              
+                <div class='n-1'>";
+                echo $row['tDateTime'];
+                echo "</div>
+                </div>
+              
+              
+              
+              
+              <div class='m-0'> Net votes :   (";
+              echo $row['votes'];
+              echo ")         &bull;        No. of Answers :   (";
+              echo $row['noAnswers'];
+              echo ")         &bull;        Views:   (";
+              echo $row['views'];
+              echo")</div>
+                            
+                        </div>
+                    </div>
+                    <div class='comment-body'>
+                        <p>";
+              echo $row['summary'];
+              echo"</p> <a href='deleteThread.php?id=$row[threadId]' >
+                        <button type='button'>Delete</button></a>
+                        <a href='updateThread.php?id=$row[threadId]' >
+                        <button type='button'>Update</button></a>
+                        <button type='button' class='colorTag'>";
+              echo $row['tag'];
+              echo "</button>
+                        <div class='author'>
+                        <a href = '#' >";
+              echo $username;          
+              echo " </a>  </div>
+                          
+                    </div>
+                </div>
+              </div>";      
+              echo "<p></p>";
 
             }
 
 
 
         ?>
-    </div>
-    </div>
+    <!-- </div>
+    </div> -->
 
     <!-- Start Footer -->
     <footer class="footer-area bg-f">

@@ -56,10 +56,16 @@
             // $username =  $_SESSION['username'];
             // echo $username;
             // $str = "SELECT * from threads where threadId = $_GET[id]";
+            
+            $str = "CALL updateViews($_GET[id])";
+            $result=ExecuteQuery($str);
+            
             $str = "CALL viewThread($_GET[id])";
             $result=ExecuteQuery($str);
             $noRows = mysqli_num_rows($result);
             
+
+
             while($row = mysqli_fetch_assoc($result)){
                     $topic = $row['topic'];
                     echo "<h1>";

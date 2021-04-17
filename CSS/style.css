@@ -162,6 +162,7 @@ html {
 .footer-area {
   padding-top: 50px;
   padding-bottom: 0px;
+  bottom: 0px;
 }
 
 .bg-f {
