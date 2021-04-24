@@ -49,22 +49,70 @@
       <!-- </div> -->
     </nav>
     </br></br></br></br>
+    <?php
+      include '../Pages/utility.php';
+      //$_SESSION variables become available on this page
+      session_start();
+      if($_SESSION['loggedin'] == false){
+        header("location: ../Pages/login.php");
+      }
+      $type = "time";
+      $way = "descend";
+      // echo $type;
+      // echo $way;
+      // die();
+      // require 'viewHome.php';
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $type =  $_POST['type'];
+        $way = $_POST['way'];
+        // die();
+      }
+    ?>
     <!-- <div class="body-content">
         <div class="module"> -->
         <?php 
         // include 'checkLogin.php';
-        include '../Pages/utility.php';
-            //$_SESSION variables become available on this page
-            session_start();
-            if($_SESSION['loggedin'] == false){
-              header("location: ../Pages/login.php");
-            }
-            // $_SESSION['message'] = '';
-            // $mysqli = new mysqli('localhost','root','','forum');
-            // $username =  $_SESSION['username'];
-            // echo $username;
-            // $str = "SELECT * from threads";
-            $str = "CALL viewAllThreads()";
+        echo "
+            <div class='module'><form class='form' action='home.php' method='post' enctype='multipart/form-data' autocomplete='off'>
+              <select name='type' id='type'>";
+               
+              if($type == "rating"){
+                echo"<option value='rating' selected>Rating</option>";
+              }else{
+                echo"<option value='rating'>Rating</option>";
+              }
+              if($type == "views"){
+                echo"<option value='views' selected>Views</option>";
+              }else{
+                echo"<option value='views'>Views</option>";
+              }
+              if($type == "noOfComments"){
+                echo"<option value='noOfComments' selected>No. of Comments</option>";
+              }else{
+                echo"<option value='noOfComments'>No. of Comments</option>";
+              }
+              if($type == "time"){
+                echo"<option value='time' selected>time</option>";
+              }else{
+                echo"<option value='time'>time</option>";
+              }                  
+              echo"</select>
+              <select name='way' id='way'>";
+              if($way == "ascend"){
+                echo"<option value='ascend' selected>Ascending</option>";
+              }else{
+                echo"<option value='ascend'>Ascending</option>";
+              } 
+              if($way == "descend"){
+                echo"<option value='descend' selected>Descending</option>";
+              }else{
+                echo"<option value='descend'>Descending</option>";
+              }
+              echo"</select>
+              <br><br>
+              <input type='submit' value='Apply' class='btn btn-block btn-primary'>
+            </form></div>";
+            $str = "CALL sortAcc('$type','$way')";
             $result=ExecuteQuery($str);
             $noRows = mysqli_num_rows($result);
 

@@ -96,8 +96,8 @@
         <?php 
             
             // require 'viewHome.php'; 
-            echo "<form class='form' action='home.php' method='post' enctype='multipart/form-data' autocomplete='off'>
-              <label for='cars'>Sort According:</label>
+            echo "
+            <div class='module'><form class='form' action='home.php' method='post' enctype='multipart/form-data' autocomplete='off'>
               <select name='type' id='type'>";
                
               if($type == "rating"){
@@ -134,8 +134,8 @@
               }
               echo"</select>
               <br><br>
-              <input type='submit' value='Submit'>
-            </form>";
+              <input type='submit' value='Apply' class='btn btn-block btn-primary'>
+            </form></div>";
 
             $str = "CALL sortAcc('$type','$way')";
             $result=ExecuteQuery($str);
