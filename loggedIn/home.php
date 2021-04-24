@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discussion Forum</title>
-    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="../CSS/dbmsNav.css" />
     <link rel="stylesheet" href="../CSS/mini_style.css" />
     <link
       rel="stylesheet"
@@ -25,39 +25,119 @@
   </head>
 <!--body-->
 <body>
-    <nav id="navbar">
-      <div id="logo">
+    <div class="navbar">
+      <!-- <div id="logo">
         <img
           src="../Pictures/logo.png"
           alt="Forum Logo"
           height="75px"
           width="100px"
         />
-      </div>
+      </div> -->
 
-      <div class="list_item">
+      <!-- <div class="list_item"> -->
         <ul>
-          <li class="item"><a href="home.php">Home</a></li>
+          <li class="active"><a href="home.php">Home</a></li>
           <li class="item"><a href="myThreads.php">My Thread</a></li>
           <li class="item"><a href="myComments.php">My Comments</a></li>
           <li class="item"><a href="addThread.php">Add Thread</a></li>
           <li class="item"><a href="aboutUS.php">About Us</a></li>
           <li class="item"><a href="contactUs.php">Contact Us</a></li>
-        </ul>
-      </div>
-    </nav>
+          <li class="item"><a href="profile.php">Profile</a></li>
+          <li class="item"><a href="logout.php">Logout</a></li>
 
+        </ul>
+      <!-- </div> -->
+    </div>
+    <!-- <form class='form' action='home.php' method='post' enctype='multipart/form-data' autocomplete='off'>
+              <label for='cars'>Sort According:</label>
+              <select name='type' id='type'>
+                <option value='rating'>Rating</option>
+                <option value='views'>Views</option>
+                <option value='noOfComments'>No. of Comments</option>
+                <option value='time' selected>Time</option>
+              </select>
+              <select name='way' id='way'>
+                <option value='ascend' selected>Ascending</option>
+                <option value='descend'>Descending</option>
+              </select>
+              <br><br>
+              <input type='submit' value='Submit'>
+            </form> -->
     <!-- <div class="body-content"> -->
         <!-- <div class="module">  -->
-         
+    <?php
+      include '../Pages/utility.php';
+      // require 'viewHome.php'; 
+      
+      echo "</br></br></br>";
+      //$_SESSION variables become available on this page
+
+      session_start();
+      // echo"dfd";
+      // require 'viewHome.php'; 
+      
+      if($_SESSION['loggedin'] == false){
+        header("location: ../Pages/login.php");
+      }
+      $type = "time";
+      $way = "descend";
+      // echo $type;
+      // echo $way;
+      // die();
+      // require 'viewHome.php';
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $type =  $_POST['type'];
+        $way = $_POST['way'];
+        // die();
+      }
+    ?>
+    
         <?php 
-            include '../Pages/utility.php';
+            
+            // require 'viewHome.php'; 
+            echo "<form class='form' action='home.php' method='post' enctype='multipart/form-data' autocomplete='off'>
+              <label for='cars'>Sort According:</label>
+              <select name='type' id='type'>";
+               
+              if($type == "rating"){
+                echo"<option value='rating' selected>Rating</option>";
+              }else{
+                echo"<option value='rating'>Rating</option>";
+              }
+              if($type == "views"){
+                echo"<option value='views' selected>Views</option>";
+              }else{
+                echo"<option value='views'>Views</option>";
+              }
+              if($type == "noOfComments"){
+                echo"<option value='noOfComments' selected>No. of Comments</option>";
+              }else{
+                echo"<option value='noOfComments'>No. of Comments</option>";
+              }
+              if($type == "time"){
+                echo"<option value='time' selected>time</option>";
+              }else{
+                echo"<option value='time'>time</option>";
+              }                  
+              echo"</select>
+              <select name='way' id='way'>";
+              if($way == "ascend"){
+                echo"<option value='ascend' selected>Ascending</option>";
+              }else{
+                echo"<option value='ascend'>Ascending</option>";
+              } 
+              if($way == "descend"){
+                echo"<option value='descend' selected>Descending</option>";
+              }else{
+                echo"<option value='descend'>Descending</option>";
+              }
+              echo"</select>
+              <br><br>
+              <input type='submit' value='Submit'>
+            </form>";
 
-            //$_SESSION variables become available on this page
-
-            session_start();
-
-            $str = "CALL viewAllThreads()";
+            $str = "CALL sortAcc('$type','$way')";
             $result=ExecuteQuery($str);
             $noRows = mysqli_num_rows($result);
             echo"</br>";
@@ -124,7 +204,7 @@
               echo $row['tag'];
               echo "</button>
                         <div class='author'>
-                        <a href = '#' >";
+                        <a href = 'profileOpen.php?userId=$row[userId]' >";
               echo $username;          
               echo " </a>  </div>
                           

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discussion Forum</title>
-    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="../CSS/dbmsNav.css" />
     <link rel="stylesheet" href="../CSS/mini_style.css" />
     <link
       rel="stylesheet"
@@ -22,8 +22,8 @@
   </head>
 <!--body-->
 <body>
-    <nav id="navbar">
-      <div id="logo">
+    <div class="navbar">
+      <!-- <div id="logo">
         <img
           src="Pictures/logo.png"
           alt="Forum Logo"
@@ -32,20 +32,26 @@
         />
       </div>
 
-      <div class="list_item">
+      <div class="list_item"> -->
         <ul>
           <li class="item"><a href="home.php">Home</a></li>
           <li class="item"><a href="myThreads.php">My Thread</a></li>
           <li class="item"><a href="myComments.php">My Comments</a></li>
-          <li class="item"><a href="addThread.php">Add Thread</a></li>
+          <li class="active"><a href="addThread.php">Add Thread</a></li>
           <li class="item"><a href="aboutUS.php">About Us</a></li>
           <li class="item"><a href="contactUs.php">Contact Us</a></li>
+          <li class="item"><a href="profile.php">Profile</a></li>
+          <li class="item"><a href="logout.php">Logout</a></li>
+
         </ul>
-      </div>
-    </nav>
+      <!-- </div> -->
+    </div>
     
     <?php 
         session_start();
+        if($_SESSION['loggedin'] == false){
+          header("location: ../Pages/login.php");
+        }
         $mysqli = new mysqli('localhost','root','','forum');
         require 'validateThread.php'; 
         $_SESSION['message']='';
@@ -54,7 +60,7 @@
         
 
 
-
+    </br></br></br>
     <div class="body-content">
         <div class="module">
             <h1>Add New Thread</h1>

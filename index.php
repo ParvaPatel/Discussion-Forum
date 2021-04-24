@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discussion Forum</title>
-    <link rel="stylesheet" href="CSS/style.css" />
+    <!-- <link rel="stylesheet" href="CSS/style.css" /> -->
+    <link rel="stylesheet" href="CSS/dbmsNav.css" />
     <link rel="stylesheet" href="CSS/mini_style.css" />
     <link
       rel="stylesheet"
@@ -22,26 +23,26 @@
   </head>
 <!--body-->
   <body>
-    <nav id="navbar">
-      <div id="logo">
+    <div class="navbar">
+      <!-- <div id="logo">
         <img
           src="Pictures/logo.png"
           alt="Forum Logo"
           height="75px"
           width="100px"
         />
-      </div>
+      </div> -->
 
-      <div class="list_item">
+      <!-- <div class="list_item"> -->
         <ul>
-          <li class="item"><a href="index.php">Home</a></li>
+          <li class="active"><a href="index.php">Home</a></li>
           <li class="item"><a href="Pages/register.php">Sign Up</a></li>
           <li class="item"><a href="Pages/login.php">Login</a></li>
           <li class="item"><a href="Pages/aboutUS.php">About Us</a></li>
           <li class="item"><a href="Pages/contactUs.php">Contact Us</a></li>
         </ul>
-      </div>
-    </nav>
+      <!-- </div> -->
+    </div>
 
     <div class="body-content">
         <div class="module">

@@ -19,6 +19,8 @@
     <link rel="icon" href="../Pictures/logo.png" type="image/png" />
     <link rel="stylesheet" href="../CSS/preloader.css" />
     <link rel="stylesheet" href="../Pages/form.css" type="text/css"><!--css for preloader and news letter-->
+    <link rel="stylesheet" href="../CSS/threadViewBox.css" type="text/css">
+    <link rel="stylesheet" href="../CSS/profile.css" type="text/css">
   </head>
 <!--body-->
 <body>
@@ -40,48 +42,62 @@
           <li class="item"><a href="addThread.php">Add Thread</a></li>
           <li class="item"><a href="aboutUS.php">About Us</a></li>
           <li class="item"><a href="contactUs.php">Contact Us</a></li>
-          <li class="item"><a href="profile.php">Profile</a></li>
+          <li class="active"><a href="profile.php">Profile</a></li>
           <li class="item"><a href="logout.php">Logout</a></li>
 
         </ul>
       <!-- </div> -->
     </nav>
-    </br>
-    <div class="body-content">
-        <div class="module">
+  </br></br></br></br>
+    <!-- <div class="body-content">
+        <div class="module"> -->
         <?php 
-        // require 'checkLogin.php';
-        include '../Pages/utility.php';
-            //$_SESSION variables become available on this page
+            include '../Pages/utility.php';
+            // $str = "SELECT extractUsername($userId) as username";
+            // $res=ExecuteQuery($str);
+            // $temp = mysqli_fetch_assoc($res);
+            // $username = $temp['username'];
             session_start();
             if($_SESSION['loggedin'] == false){
               header("location: ../Pages/login.php");
             }
             $username = $_SESSION['username'];
-            $str = "SELECT id from users where username = '$username'";
+            $str = "SELECT extractUserId('$username') as id";
             $result=ExecuteQuery($str);
-            
-            // $no_rows = mysqli_num_rows($result);
             $row = mysqli_fetch_assoc($result);
+            $userId = $row['id']; 
 
-            $userId = $row['id'];   
-            // got userId
-            $commentId =  $_GET['id'];
-            // echo $commentId;
-            // echo $userId;
-            // die();
-            // $str = "DELETE from votecomment where commentId = $commentId";
-            // $result=ExecuteQuery($str);
-            // $str = "DELETE from comments where commentId = $commentId";
-            $str = "CALL deleteComment($commentId)";
-            $result=ExecuteQuery($str);
+            $str = "CALL getUserDetails($userId)";
+            $res=ExecuteQuery($str);
+            $temp = mysqli_fetch_assoc($res);
 
-            echo "Comment Deleted Successfully!";
-            echo "<a href = 'home.php'>Click Here</a>";
-             
+            $avatar = "../Pages/";
+            $path = $temp['avatar'];
+            $avatarPath = $avatar.$path;
+            
+            $str = "SELECT countThreadsByUser($userId) as noRows";
+            $cur= ExecuteQuery($str);
+            $temp2 = mysqli_fetch_assoc($cur);
+              // print_r ($temp2['total']);
+            $noThreads = $temp2['noRows'];
+            $str = "SELECT countCommentsByUser($userId) as noRows";
+            $cur= ExecuteQuery($str);
+            $temp2 = mysqli_fetch_assoc($cur);
+            $noComments = $temp2['noRows'];
         ?>
-    </div>
-    </div>
+
+        <div class = "profilePic">
+            
+            <img src = '<?= $avatarPath ?>' alt = "Profile Pic" width="150px" height="150px" >
+            <h1><?= $temp['username']?></h1>
+            <div class="alert alert-success">Name = <?=$temp['name']?></div>
+            <div class="alert alert-success">Email = <?=$temp['email']?></div>
+            <div class="alert alert-success">No. of Threads Posted = <?=$noThreads?></div>
+            <div class="alert alert-success">No. of Comments Posted = <?=$noComments?></div>
+            
+        </div>
+    <!-- </div>
+    </div> -->
 
     <!-- Start Footer -->
     <footer class="footer-area bg-f">
@@ -103,3 +119,7 @@
    
   </body>
 </html>
+
+
+
+

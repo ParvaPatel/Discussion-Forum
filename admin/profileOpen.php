@@ -19,6 +19,10 @@
     <link rel="icon" href="../Pictures/logo.png" type="image/png" />
     <link rel="stylesheet" href="../CSS/preloader.css" />
     <link rel="stylesheet" href="../Pages/form.css" type="text/css"><!--css for preloader and news letter-->
+    <link rel="stylesheet" href="../CSS/threadViewBox.css" type="text/css">
+    <link rel="stylesheet" href="../CSS/profile.css" type="text/css">
+    
+
   </head>
 <!--body-->
 <body>
@@ -46,51 +50,52 @@
         </ul>
       <!-- </div> -->
     </nav>
-    </br>
-    <?php 
+    </br></br></br></br></br></br>
+    <!-- <div class="body-content">
+        <div class="module"> -->
+        <?php 
+        // require 'checkLogin.php';
         session_start();
+        include '../Pages/utility.php';
         if($_SESSION['loggedin'] == false){
           header("location: ../Pages/login.php");
         }
-        require 'updateThreadValidate.php'; 
-        $_SESSION['message']='';
+            $userId = $_GET['userId'];
+            // $str = "SELECT extractUsername($userId) as username";
+            // $res=ExecuteQuery($str);
+            // $temp = mysqli_fetch_assoc($res);
+            // $username = $temp['username'];
 
-        $username =  $_SESSION['username'];         
-        $str = "SELECT extractUserId('$username') as id";
-        $result=ExecuteQuery($str);
-        $row = mysqli_fetch_assoc($result);
-        $userId = $row['id'];  
+            $str = "CALL getUserDetails($userId)";
+            $res=ExecuteQuery($str);
+            $temp = mysqli_fetch_assoc($res);
 
-        $threadId = $_GET['id'];
-
-        // $sql = "SELECT * FROM threads where userId = $userId and threadId = $threadId";
-        $sql = "CALL preUpdateViewThread($userId,$threadId)";
-        $result = ExecuteQuery($sql);
-        
-        $row = mysqli_fetch_assoc($result);
-        // $topic = $row['topic'];
-        // $summary = $row['summary'];
-        // $tag = $row['tag'];
-        // echo $topic;
-        // echo $summary;
-        // echo $tag;
-        // die();
+            $avatar = "../Pages/";
+            $path = $temp['avatar'];
+            $avatarPath = $avatar.$path;
+            
+            $str = "SELECT countThreadsByUser($userId) as noRows";
+            $cur= ExecuteQuery($str);
+            $temp2 = mysqli_fetch_assoc($cur);
+              // print_r ($temp2['total']);
+            $noThreads = $temp2['noRows'];
+            $str = "SELECT countCommentsByUser($userId) as noRows";
+            $cur= ExecuteQuery($str);
+            $temp2 = mysqli_fetch_assoc($cur);
+            $noComments = $temp2['noRows'];
         ?>
-    
 
-        <div class="body-content">
-        <div class="module">
-            <h1>Update this Thread</h1>
-            <form class="form" action="updateThreadYes.php?id=<?php echo $threadId;?>" method="post" enctype="multipart/form-data" autocomplete="off">
-            <div class="alert alert-error"><?= $_SESSION['message'] ?></div>
-            <input type="text" placeholder="topic" name="topic" value = "<?php echo $row['topic'];?>" required />
-            <input type="text" placeholder="Summary" name="summary" value = "<?php echo $row['summary'];?>" required />
-            <input type="text" placeholder="Tag" name="tag" value = "<?php echo $row['tag'];?>" required />
-            <input type="submit" value="Update this Thread" name="updateThread" class="btn btn-block btn-primary" />
-            </form>
-            <!-- <textarea name="summary" placeholder="Summary" form="usrform">Enter text here...</textarea> -->
+        <div class = "profilePic">
+            
+            <img src = '<?= $avatarPath ?>' alt = "Profile Pic" width="150px" height="150px" >
+            <h1><?= $temp['username']?></h1>
+            <div class="alert alert-success">No. of Threads Posted = <?=$noThreads?></div>
+            <div class="alert alert-success">No. of Comments Posted = <?=$noComments?></div>
+            
         </div>
-    </div>
+    <!-- </div>
+    </div> -->
+    </br></br></br></br>
     <!-- Start Footer -->
     <footer class="footer-area bg-f">
       <div class="copyright">
@@ -111,3 +116,7 @@
    
   </body>
 </html>
+
+
+
+

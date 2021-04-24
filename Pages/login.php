@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discussion Forum</title>
-    <link rel="stylesheet" href="../CSS/style.css" />
-      <link rel="stylesheet" href="../CSS/mini_style.css" />
+    <link rel="stylesheet" href="../CSS/dbmsNav.css" />
+    <link rel="stylesheet" href="../CSS/mini_style.css" />
     <link
       rel="stylesheet"
       media="screen and (max-width: 1480px)"
@@ -16,13 +16,14 @@
       href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600&family=Bree+Serif&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="../Pictures/logo.png" type="image/png" />    <link href="//db.onlinewebfonts.com/c/a4e256ed67403c6ad5d43937ed48a77b?family=Core+Sans+N+W01+35+Light" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="form.css" type="text/css">
+    <link rel="icon" href="../Pictures/logo.png" type="image/png" />    
+    <link href="//db.onlinewebfonts.com/c/a4e256ed67403c6ad5d43937ed48a77b?family=Core+Sans+N+W01+35+Light" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="form.css" type="text/css"/>
   </head>
 <!--body-->
 <body>
-    <nav id="navbar">
-      <div id="logo">
+    <div class="navbar">
+      <!-- <div id="logo">
         <img
           src="Pictures/logo.png"
           alt="Forum Logo"
@@ -31,16 +32,17 @@
         />
       </div>
 
-      <div class="list_item">
+      <div class="list_item"> -->
         <ul>
           <li class="item"><a href="../index.php">Home</a></li>
           <li class="item"><a href="register.php">Sign Up</a></li>
-          <li class="item"><a href="login.php">Login</a></li>
+          <li class="active"><a href="login.php">Login</a></li>
           <li class="item"><a href="aboutUS.php">About Us</a></li>
           <li class="item"><a href="contactUs.php">Contact Us</a></li>
         </ul>
-      </div>
-    </nav>
+      <!-- </div> -->
+    </div>
+    </br>
     <?php
 
         session_start();

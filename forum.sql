@@ -71,3 +71,8 @@ CREATE TABLE IF NOT EXISTS `voteComment` (
   FOREIGN KEY (userId) REFERENCES users(id) ,
   FOREIGN KEY (commentId) REFERENCES comments(commentId) 
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+
+-- SELECT a.id,a.username,b.email,b.name,b.password,b.avatar
+-- from temp as a join temp2 as b on a.id = b.id;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discussion Forum</title>
-    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="../CSS/dbmsNav.css" />
     <link rel="stylesheet" href="../CSS/mini_style.css" />
     <link
       rel="stylesheet"
@@ -24,8 +24,8 @@
   </head>
 <!--body-->
 <body>
-    <nav id="navbar">
-      <div id="logo">
+    <nav class="navbar">
+      <!-- <div id="logo">
         <img
           src="Pictures/logo.png"
           alt="Forum Logo"
@@ -34,17 +34,21 @@
         />
       </div>
 
-      <div class="list_item">
+      <div class="list_item"> -->
         <ul>
           <li class="item"><a href="home.php">Home</a></li>
           <li class="item"><a href="myThreads.php">My Thread</a></li>
-          <li class="item"><a href="myComments.php">My Comments</a></li>
+          <li class="active"><a href="myComments.php">My Comments</a></li>
           <li class="item"><a href="addThread.php">Add Thread</a></li>
           <li class="item"><a href="aboutUS.php">About Us</a></li>
           <li class="item"><a href="contactUs.php">Contact Us</a></li>
+          <li class="item"><a href="profile.php">Profile</a></li>
+          <li class="item"><a href="logout.php">Logout</a></li>
+
         </ul>
-      </div>
+      <!-- </div> -->
     </nav>
+    </br></br>
 <!-- 
     <div class="body-content">
         <div class="module"> -->
@@ -52,6 +56,9 @@
             include '../Pages/utility.php';
             //$_SESSION variables become available on this page
             session_start();
+            if($_SESSION['loggedin'] == false){
+              header("location: ../Pages/login.php");
+            }
             // $_SESSION['message'] = '';
             // $mysqli = new mysqli('localhost','root','','forum');
             // $username =  $_SESSION['username'];
@@ -84,12 +91,12 @@
             if($result){
                 
                 
-                echo "<h1>No. of Threads Where you commented : ";
-                echo $noThreads;
-                echo "</h1>";
-                echo "<h1>No. of Comments by You : ";
-                echo $noComments;
-                echo "</h1>";
+              echo "</br><div class=alert alert-success'>No. of Threads Where you commented : ";
+              echo $noThreads;
+              echo "</div>";
+              echo "<div class=alert alert-success'>No. of Comments by You : ";
+              echo $noComments;
+              echo "</div>";
                 while($row = mysqli_fetch_assoc($result)){
                   $userId = $row['userId'];
                   $str = "SELECT extractUsername($userId) as username";
@@ -152,7 +159,7 @@
                   echo $row['tag'];
                   echo "</button>
                             <div class='author'>
-                            <a href = '#' >";
+                            <a href = 'profileOpen.php?userId=$row[userId]' >";
                   echo $username;          
                   echo " </a>  </div>
                               
