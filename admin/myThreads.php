@@ -22,19 +22,8 @@
     <link rel="stylesheet" href="../CSS/box.css" type="text/css"/>  
 
   </head>
-<!--body-->
 <body>
     <nav class="navbar">
-      <!-- <div id="logo">
-        <img
-          src="Pictures/logo.png"
-          alt="Forum Logo"
-          height="75px"
-          width="100px"
-        />
-      </div>
-
-      <div class="list_item"> -->
         <ul>
           <li class="item"><a href="home.php">Home</a></li>
           <li class="active"><a href="myThreads.php">My Thread</a></li>
@@ -46,11 +35,8 @@
           <li class="item"><a href="logout.php">Logout</a></li>
 
         </ul>
-      <!-- </div> -->
     </nav>
     </br></br>
-    <!-- <div class="body-content">
-        <div class="module"> -->
     <?php
       include '../Pages/utility.php';
       //$_SESSION variables become available on this page
@@ -61,42 +47,21 @@
       $duration = "All";
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $duration =  $_POST['duration'];
-        // echo $duration;
-        //  die();
+        
       }
     ?>
         <?php 
-        // require 'checkLogin.php';
-        // include '../Pages/utility.php';
-            //$_SESSION variables become available on this page
-            // session_start();
-            // if($_SESSION['loggedin'] == false){
-            //   header("location: ../Pages/login.php");
-            // }
-            // $_SESSION['message'] = '';
-            // $mysqli = new mysqli('localhost','root','','forum');
-            // $username =  $_SESSION['username'];
-            // echo $username;
+        
             $username = $_SESSION['username'];
             // $str = "SELECT id from users where username = '$username'";
             $str = "SELECT extractUserId('$username') as id";
             $result=ExecuteQuery($str);
             $row = mysqli_fetch_assoc($result);
             $userId = $row['id'];            
-            // echo "<h3> PHP List All Session Variables</h3>";
-            //     foreach ($_SESSION as $key=>$val)
-            //     echo $key." ".$val."<br/>";
-            // echo $_SESSION['username'];
-            // $str = "SELECT * from threads where userId = $userId";
+            
             $str = "CALL retriveMyThreadsAcctoDate($userId,'$duration')";
             $result=ExecuteQuery($str);
             if($result){
-
-              // $str = "SELECT countThreadsByUser($userId) as noRows";
-              // $temp= ExecuteQuery($str);
-              // $temp2 = mysqli_fetch_assoc($temp);
-              // // print_r ($temp2['total']);
-              // $noRows = $temp2['noRows'];
 
               $noRows = mysqli_num_rows($result);
               echo "</br><div class=alert alert-success'>No. of Threads Posted : ";
@@ -202,8 +167,7 @@
                 echo "<h1>No. of Threads Posted : 0 </h1>";
             }
         ?>
-    <!-- </div>
-    </div> -->
+  
 
     <!-- Start Footer -->
     <footer class="footer-area bg-f">

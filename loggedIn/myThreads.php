@@ -25,16 +25,7 @@
 <!--body-->
 <body>
     <nav class="navbar">
-      <!-- <div id="logo">
-        <img
-          src="Pictures/logo.png"
-          alt="Forum Logo"
-          height="75px"
-          width="100px"
-        />
-      </div>
-
-      <div class="list_item"> -->
+      
         <ul>
           <li class="item"><a href="home.php">Home</a></li>
           <li class="active"><a href="myThreads.php">My Thread</a></li>
@@ -46,11 +37,8 @@
           <li class="item"><a href="logout.php">Logout</a></li>
 
         </ul>
-      <!-- </div> -->
     </nav>
     </br></br>
-    <!-- <div class="body-content">
-        <div class="module"> -->
     <?php
       include '../Pages/utility.php';
       //$_SESSION variables become available on this page
@@ -201,9 +189,6 @@
                 echo "<h1>No. of Threads Posted : 0 </h1>";
             }
         ?>
-    <!-- </div>
-    </div> -->
-
     <!-- Start Footer -->
     <footer class="footer-area bg-f">
       <div class="copyright">

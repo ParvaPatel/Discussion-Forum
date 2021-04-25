@@ -26,16 +26,7 @@
 <!--body-->
 <body>
     <div class="navbar">
-      <!-- <div id="logo">
-        <img
-          src="../Pictures/logo.png"
-          alt="Forum Logo"
-          height="75px"
-          width="100px"
-        />
-      </div> -->
-
-      <!-- <div class="list_item"> -->
+      
         <ul>
           <li class="active"><a href="home.php">Home</a></li>
           <li class="item"><a href="myThreads.php">My Thread</a></li>
@@ -49,23 +40,7 @@
         </ul>
       <!-- </div> -->
     </div>
-    <!-- <form class='form' action='home.php' method='post' enctype='multipart/form-data' autocomplete='off'>
-              <label for='cars'>Sort According:</label>
-              <select name='type' id='type'>
-                <option value='rating'>Rating</option>
-                <option value='views'>Views</option>
-                <option value='noOfComments'>No. of Comments</option>
-                <option value='time' selected>Time</option>
-              </select>
-              <select name='way' id='way'>
-                <option value='ascend' selected>Ascending</option>
-                <option value='descend'>Descending</option>
-              </select>
-              <br><br>
-              <input type='submit' value='Submit'>
-            </form> -->
-    <!-- <div class="body-content"> -->
-        <!-- <div class="module">  -->
+    
     <?php
       include '../Pages/utility.php';
       // require 'viewHome.php'; 
@@ -238,39 +213,3 @@
    
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-<!-- // $topic = $row['topic'];
-                  // echo "<h1><a href='threadView.php?id=$row[threadId]'>";
-                  // echo $topic;
-                  // echo "</a></h1>";
-                  // $noRows = $row['votes'];
-
-                  // echo "Net Votes : ";
-                  // echo $noRows;
-                  // echo "</br>";
-                  // echo "<p><a href='deleteThread.php?id=$row[threadId]'>";
-                  // echo "Delete</a>";
-                  // echo "<a href='updateThread.php?id=$row[threadId]'>";
-                  // echo "Update</a></p>";
-                  // echo "<br/><br/>";
-                  // $summary = $row['summary'];
-                  // echo $summary;
-                  // echo "<br/><br/><br/>";
-                  // $tDateTime = $row['tDateTime'];
-                  // echo $tDateTime;
-                  // echo "</br>";
-                  // $tag = $row['tag'];
-                  // echo $tag; -->
-<!-- 
-                  <div class='button' href='deleteThread.php?id=$row[threadId]' >Delete</div>
-                        <div class='button'>Update</div> -->

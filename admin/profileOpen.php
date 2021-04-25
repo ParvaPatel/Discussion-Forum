@@ -27,16 +27,7 @@
 <!--body-->
 <body>
     <nav class="navbar">
-      <!-- <div id="logo">
-        <img
-          src="Pictures/logo.png"
-          alt="Forum Logo"
-          height="75px"
-          width="100px"
-        />
-      </div>
-
-      <div class="list_item"> -->
+      
         <ul>
           <li class="item"><a href="home.php">Home</a></li>
           <li class="item"><a href="myThreads.php">My Thread</a></li>
@@ -51,8 +42,7 @@
       <!-- </div> -->
     </nav>
     </br></br></br></br></br></br>
-    <!-- <div class="body-content">
-        <div class="module"> -->
+    
         <?php 
         // require 'checkLogin.php';
         session_start();
@@ -93,8 +83,7 @@
             <div class="alert alert-success">No. of Comments Posted = <?=$noComments?></div>
             
         </div>
-    <!-- </div>
-    </div> -->
+    
     </br></br></br></br>
     <!-- Start Footer -->
     <footer class="footer-area bg-f">

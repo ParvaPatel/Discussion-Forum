@@ -20,19 +20,9 @@
     <link rel="stylesheet" href="../CSS/preloader.css" />
     <link rel="stylesheet" href="../Pages/form.css" type="text/css"><!--css for preloader and news letter-->
   </head>
-<!--body-->
 <body>
     <nav class="navbar">
-      <!-- <div id="logo">
-        <img
-          src="Pictures/logo.png"
-          alt="Forum Logo"
-          height="75px"
-          width="100px"
-        />
-      </div>
-
-      <div class="list_item"> -->
+      
         <ul>
           <li class="item"><a href="home.php">Home</a></li>
           <li class="item"><a href="myThreads.php">My Thread</a></li>
@@ -44,7 +34,6 @@
           <li class="item"><a href="logout.php">Logout</a></li>
 
         </ul>
-      <!-- </div> -->
     </nav>
     </br>
     <?php 

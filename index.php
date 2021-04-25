@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discussion Forum</title>
-    <!-- <link rel="stylesheet" href="CSS/style.css" /> -->
     <link rel="stylesheet" href="CSS/dbmsNav.css" />
     <link rel="stylesheet" href="CSS/mini_style.css" />
     <link rel="stylesheet" href="CSS/aboutUs.css" />
@@ -22,19 +21,9 @@
     <link rel="stylesheet" href="CSS/preloader.css" /><!--css for preloader and news letter-->
     <link rel="stylesheet" href="Pages/form.css" type="text/css">
   </head>
-<!--body-->
   <body>
     <div class="navbar">
-      <!-- <div id="logo">
-        <img
-          src="Pictures/logo.png"
-          alt="Forum Logo"
-          height="75px"
-          width="100px"
-        />
-      </div> -->
-
-      <!-- <div class="list_item"> -->
+      
         <ul>
           <li class="active"><a href="index.php">Home</a></li>
           <li class="item"><a href="Pages/register.php">Sign Up</a></li>
@@ -42,17 +31,14 @@
           <li class="item"><a href="Pages/aboutUS.php">About Us</a></li>
           <li class="item"><a href="Pages/contactUs.php">Contact Us</a></li>
         </ul>
-      <!-- </div> -->
     </div>
 </br></br></br></br>
-    <!-- <div class="body-content">
-        <div class="module"> -->
 
     <div class="creator">
       </br>
       <div class="imageCSS2">
         <img src="Pictures/logoImage.png" height="150px" width="150px" class="imageCSS1" alt="Parva's Photo">
-      </div>            <!-- <p><img src="Pictures/logoImage.png" alt="Image" ></p> -->
+      </div>           
 
       <div class="contentHomeCSS">
           <h5>Find the best answer to your technical question, help others answer theirs!</h5></br>
@@ -73,8 +59,7 @@
       
     </div>
 </br>
-<!-- </div>
-    </div> -->
+
     <!-- Start Footer -->
     <footer class="footer-area bg-f">
       <div class="copyright">

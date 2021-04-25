@@ -24,16 +24,7 @@
 <!--body-->
 <body>
     <nav class="navbar">
-      <!-- <div id="logo">
-        <img
-          src="Pictures/logo.png"
-          alt="Forum Logo"
-          height="75px"
-          width="100px"
-        />
-      </div>
-
-      <div class="list_item"> -->
+      
         <ul>
           <li class="item"><a href="home.php">Home</a></li>
           <li class="item"><a href="myThreads.php">My Thread</a></li>
@@ -48,8 +39,7 @@
       <!-- </div> -->
     </nav>
     </br></br></br>
-    <!-- <div class="body-content">
-        <div class="module"> -->
+    
         <?php 
         // require 'checkLogin.php';
         include '../Pages/utility.php';
@@ -59,11 +49,7 @@
               header("location: ../Pages/login.php");
             }
             require 'voteThread.php';
-            // $_SESSION['message'] = '';
-            // $mysqli = new mysqli('localhost','root','','forum');
-            // $username =  $_SESSION['username'];
-            // echo $username;
-            // $str = "SELECT * from threads where threadId = $_GET[id]";
+            
             
             $str = "CALL updateViews($_GET[id])";
             $result=ExecuteQuery($str);
@@ -207,8 +193,6 @@
           }
           echo "</div></div></br>";
         ?>
-    <!-- </div>
-    </div> -->
 
     <!-- Start Footer -->
     <footer class="footer-area bg-f">
@@ -230,30 +214,3 @@
    
   </body>
 </html>
-
-
-
-
-
-
-<!-- 
-$description = $row['description'];
-                echo $description;
-                echo "<br/>";
-                $cDateTime = $row['cDateTime'];
-                echo $cDateTime;
-                echo "<a href='deleteComment.php?id=$row[commentId]'>";
-                echo "    Delete comment</a>";
-                echo "<a href='updateComment.php?id=$row[commentId]'>";
-                echo "    Update comment</a>";
-                $noRows = $row['votes'];
-
-                echo "</br>Net Votes : ";
-                echo $noRows;
-                $commentId = $row['commentId'];
-                echo"<form class='form' action='threadView.php?id=$_GET[id]' method='post' enctype='multipart/form-data' autocomplete='off'>
-                    <input type='submit' value='Up' name='vote' class='btn btn-block btn-primary' />
-                    <input type='submit' value='Down' name='vote' class='btn btn-block btn-primary' />
-                    <input type='hidden' name='commentId' value=$commentId>
-                    </form>";
-                echo "<br/><br/>"; -->

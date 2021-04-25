@@ -24,16 +24,7 @@
 <!--body-->
 <body>
     <div class="navbar">
-      <!-- <div id="logo">
-        <img
-          src="Pictures/logo.png"
-          alt="Forum Logo"
-          height="75px"
-          width="100px"
-        />
-      </div>
-
-      <div class="list_item"> -->
+      
         <ul>
           <li class="item"><a href="../index.php">Home</a></li>
           <li class="item"><a href="register.php">Sign Up</a></li>
@@ -41,14 +32,8 @@
           <li class="item"><a href="aboutUS.php">About Us</a></li>
           <li class="active"><a href="contactUs.php">Contact Us</a></li>
         </ul>
-      <!-- </div> -->
     </div>
 </br></br></br>
-    <!-- <div class="body-content">
-        <div class="module">
-            
-        </div>
-    </div> -->
 <div class="creator">
   <div class="imageCSS">
     <img src="../Pictures/parva.jfif" height="150px" width="150px" class="imageCSS1" alt="Parva's Photo">
