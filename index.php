@@ -7,6 +7,7 @@
     <!-- <link rel="stylesheet" href="CSS/style.css" /> -->
     <link rel="stylesheet" href="CSS/dbmsNav.css" />
     <link rel="stylesheet" href="CSS/mini_style.css" />
+    <link rel="stylesheet" href="CSS/aboutUs.css" />
     <link
       rel="stylesheet"
       media="screen and (max-width: 1480px)"
@@ -43,12 +44,37 @@
         </ul>
       <!-- </div> -->
     </div>
+</br></br></br></br>
+    <!-- <div class="body-content">
+        <div class="module"> -->
 
-    <div class="body-content">
-        <div class="module">
-            
-        </div>
+    <div class="creator">
+      </br>
+      <div class="imageCSS2">
+        <img src="Pictures/logoImage.png" height="150px" width="150px" class="imageCSS1" alt="Parva's Photo">
+      </div>            <!-- <p><img src="Pictures/logoImage.png" alt="Image" ></p> -->
+
+      <div class="contentHomeCSS">
+          <h5>Find the best answer to your technical question, help others answer theirs!</h5></br>
+          Terms and Condition to use :
+      </div>
+      <div class="contentHomeCSS1">
+            <ol>
+              <li>Do not Spam</li>
+              <li>Do not Abuse / Harass others.</li>
+              <li>You must be at least 13 years old to access or use this Product.</li>
+              <li>All materials displayed or performed on the public Network, including 
+                but not limited to text, graphics, logos, tools, photographs, images, 
+                illustrations, software or source code, audio and video, and animations 
+                (collectively “Network Content”) are the property of P cube</li>
+              <li>Your continued use of the Website is considered to be acceptance of the Terms of Use.</li>
+            </ol>
+      </div>
+      
     </div>
+</br>
+<!-- </div>
+    </div> -->
     <!-- Start Footer -->
     <footer class="footer-area bg-f">
       <div class="copyright">

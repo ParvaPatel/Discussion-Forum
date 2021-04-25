@@ -268,3 +268,24 @@ input[type="email"]:focus {
 
 
 
+.sumeetK{
+  position:relative;
+  display: inline-block;
+  top:10%;    
+  height:65%;
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+}
+.parvaS{
+  display: inline-block;
+  padding-left: 10px;
+  width: 100px;
+}
+.parvaS1{
+  display: inline-block;
+  padding-left: 10px;
+  width: 150px;
+}
+

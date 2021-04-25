@@ -51,14 +51,28 @@
     </br></br>
     <!-- <div class="body-content">
         <div class="module"> -->
+    <?php
+      include '../Pages/utility.php';
+      //$_SESSION variables become available on this page
+      session_start();
+      if($_SESSION['loggedin'] == false){
+        header("location: ../Pages/login.php");
+      }
+      $duration = "All";
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $duration =  $_POST['duration'];
+        // echo $duration;
+        //  die();
+      }
+    ?>
         <?php 
         // require 'checkLogin.php';
-        include '../Pages/utility.php';
+        // include '../Pages/utility.php';
             //$_SESSION variables become available on this page
-            session_start();
-            if($_SESSION['loggedin'] == false){
-              header("location: ../Pages/login.php");
-            }
+            // session_start();
+            // if($_SESSION['loggedin'] == false){
+            //   header("location: ../Pages/login.php");
+            // }
             // $_SESSION['message'] = '';
             // $mysqli = new mysqli('localhost','root','','forum');
             // $username =  $_SESSION['username'];
@@ -74,20 +88,44 @@
             //     echo $key." ".$val."<br/>";
             // echo $_SESSION['username'];
             // $str = "SELECT * from threads where userId = $userId";
-            $str = "CALL viewMyThreads($userId)";
+            $str = "CALL retriveMyThreadsAcctoDate($userId,'$duration')";
             $result=ExecuteQuery($str);
             if($result){
 
-              $str = "SELECT countThreadsByUser($userId) as noRows";
-              $temp= ExecuteQuery($str);
-              $temp2 = mysqli_fetch_assoc($temp);
-              // print_r ($temp2['total']);
-              $noRows = $temp2['noRows'];
+              // $str = "SELECT countThreadsByUser($userId) as noRows";
+              // $temp= ExecuteQuery($str);
+              // $temp2 = mysqli_fetch_assoc($temp);
+              // // print_r ($temp2['total']);
+              // $noRows = $temp2['noRows'];
 
-              // $noRows = mysqli_num_rows($result);
+              $noRows = mysqli_num_rows($result);
               echo "</br><div class=alert alert-success'>No. of Threads Posted : ";
               echo $noRows;
               echo "</div>";
+              
+              echo"<div class='sumeetK'><form class='form' action='myThreads.php' method='post' enctype='multipart/form-data' autocomplete='off'>";
+              echo "<div class='parvaS'>";
+              if($duration == "All"){
+                echo"<input name='duration' type='submit' disabled value='All' class='active1 btn btn-block btn-primary'>";
+              }else{
+                echo"<input name='duration' type='submit' value='All' class='active1 btn btn-block btn-primary'>";
+              }
+              echo "</div>";
+              echo "<div class='parvaS'>";
+              if($duration == "Last Week"){
+                echo"<input name='duration' type='submit' disabled value='Last Week' class='active1 btn btn-block btn-primary'>";
+              }else{
+                echo"<input name='duration' type='submit' value='Last Week' class='active1 btn btn-block btn-primary'>";
+              }
+              echo "</div>";
+              echo "<div class='parvaS'>";
+              if($duration == "Last Month"){
+                echo"<input name='duration' type='submit' disabled value='Last Month' class='active1 btn btn-block btn-primary'>";
+              }else{
+                echo"<input name='duration' type='submit' value='Last Month' class='active1 btn btn-block btn-primary'>";
+              }
+              echo "</div>";
+              echo"</form></div>";
 
                   while($row = mysqli_fetch_assoc($result)){
                     $userId = $row['userId'];

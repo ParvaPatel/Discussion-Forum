@@ -97,8 +97,8 @@
             
             // require 'viewHome.php'; 
             echo "
-            <div class='module'><form class='form' action='home.php' method='post' enctype='multipart/form-data' autocomplete='off'>
-              <select name='type' id='type'>";
+            <div class='sumeetK'><form class='form' action='home.php' method='post' enctype='multipart/form-data' autocomplete='off'>
+              <div class='parvaS1'><select name='type' id='type'>";
                
               if($type == "rating"){
                 echo"<option value='rating' selected>Rating</option>";
@@ -120,7 +120,7 @@
               }else{
                 echo"<option value='time'>time</option>";
               }                  
-              echo"</select>
+              echo"</select></div><div class='parvaS1'>
               <select name='way' id='way'>";
               if($way == "ascend"){
                 echo"<option value='ascend' selected>Ascending</option>";
@@ -132,10 +132,11 @@
               }else{
                 echo"<option value='descend'>Descending</option>";
               }
-              echo"</select>
-              <br><br>
+              echo"</select></div>
+              <div class='parvaS'>
               <input type='submit' value='Apply' class='btn btn-block btn-primary'>
-            </form></div>";
+              </div>
+              </form></div>";
 
             $str = "CALL sortAcc('$type','$way')";
             $result=ExecuteQuery($str);

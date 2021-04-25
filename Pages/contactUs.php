@@ -6,6 +6,7 @@
     <title>Discussion Forum</title>
     <link rel="stylesheet" href="../CSS/dbmsNav.css" />
     <link rel="stylesheet" href="../CSS/mini_style.css" />
+    <link rel="stylesheet" href="../CSS/contactUs.css" />
     <link
       rel="stylesheet"
       media="screen and (max-width: 1480px)"
@@ -42,12 +43,58 @@
         </ul>
       <!-- </div> -->
     </div>
-
-    <div class="body-content">
+</br></br></br>
+    <!-- <div class="body-content">
         <div class="module">
             
         </div>
-    </div>
+    </div> -->
+<div class="creator">
+  <div class="imageCSS">
+    <img src="../Pictures/parva.jfif" height="150px" width="150px" class="imageCSS1" alt="Parva's Photo">
+  </div>
+  <div class="titleCSS">
+      <h1>Parva Shaileshkumar Patel</h1>
+      <p>LinkedIn : <a href="https://www.linkedin.com/in/parva-patel-b95235193/">
+      https://www.linkedin.com/in/parva-patel-b95235193/ </a>
+      Github &nbsp;&nbsp;&nbsp;: <a href="https://github.com/ParvaPatel">
+      https://github.com/ParvaPatel </a></br>
+      Email Id &nbsp;: <a href="https://mail.google.com/mail/u/0/#inbox?compose=new">
+      parvapatel2571@gmail.com </a></p>
+  </div>
+</div>
+  </br>
+<div class="creator">
+  <div class="imageCSS">
+  <img src="../Pictures/jinil.png" height="150px" width="150px" class="imageCSS1" alt="Jinil's Photo">
+  </div>
+  <div class="titleCSS">
+      <h1>Jinil Jigarkumar Thakkar</h1>
+      <p>LinkedIn : <a href="https://www.linkedin.com/in/jinil-thakkar-95a64919a/">
+      https://www.linkedin.com/in/jinil-thakkar-95a64919a/ </a>
+      Github &nbsp;&nbsp;&nbsp;: <a href="https://github.com/jinil-thakkar">
+      https://github.com/jinil-thakkar </a></br>
+      Email Id &nbsp;: <a href="https://mail.google.com/mail/u/0/#inbox?compose=new">
+      jjthakkar30@gmail.com </a></p>
+  </div>
+  
+</div>
+</br>
+<div class="creator">
+  <div class="imageCSS">
+  <img src="../Pictures/yash.jfif" height="150px" width="150px" class="imageCSS1" alt="Yash's Photo">
+  </div>
+  <div class="titleCSS">
+      <h1>Yash Maheshbhai Patel</h1>
+      <p>LinkedIn : <a href="https://www.linkedin.com/in/yash-patel-b87b46195/">
+      https://www.linkedin.com/in/yash-patel-b87b46195/ </a>
+      Github &nbsp;&nbsp;&nbsp;: <a href="https://github.com/y4sh-patel">
+      https://github.com/y4sh-patel </a></br>
+      Email Id &nbsp;: <a href="https://mail.google.com/mail/u/0/#inbox?compose=new">
+      yashpatel9472@gmail.com </a></p>
+  </div>
+</div>
+</br>
     <!-- Start Footer -->
     <footer class="footer-area bg-f">
       <div class="copyright">

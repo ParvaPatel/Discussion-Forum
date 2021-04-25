@@ -93,8 +93,8 @@
                 
               echo "</br><div class=alert alert-success'>No. of Threads Where you commented : ";
               echo $noThreads;
-              echo "</div>";
-              echo "<div class=alert alert-success'>No. of Comments by You : ";
+              // echo "</div>";
+              echo "&emsp;&emsp;&emsp;No. of Comments by You : ";
               echo $noComments;
               echo "</div>";
                 while($row = mysqli_fetch_assoc($result)){
