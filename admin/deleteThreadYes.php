@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../Pages/form.css" type="text/css"><!--css for preloader and news letter-->
   </head>
 <body>
-    <nav id="navbar">
+    <nav class="navbar">
       
         <ul>
           <li class="item"><a href="home.php">Home</a></li>
@@ -60,10 +60,20 @@
             // $str = "Delete from comments where threadId = $threadId";
             // $result=ExecuteQuery($str);
             // $str = "Delete from threads where userId = $userId and threadId = $threadId";
+
+            $str = "CALL viewComments($threadId)";
+            $result=ExecuteQuery($str);
+            while($row = mysqli_fetch_assoc($result)){
+              $commentId = $row['commentId'];
+              // echo $commentId;
+              $str1 = "CALL deleteComment($commentId)";
+              $res1=ExecuteQuery($str1);
+            }
+
             $str = "CALL deleteThread($threadId)";
             $result=ExecuteQuery($str);
 
-            echo "Thread Deleted Successfully!";
+            echo "Deleted Successfully!";
             echo "<a href = 'home.php'>Click Here</a>";
              
         ?>

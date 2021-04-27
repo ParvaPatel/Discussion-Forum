@@ -60,6 +60,17 @@
             // $str = "Delete from comments where threadId = $threadId";
             // $result=ExecuteQuery($str);
             // $str = "Delete from threads where userId = $userId and threadId = $threadId";
+
+            // $str = "SELECT * comments where threadId = $threadId";
+            $str = "CALL viewComments($threadId)";
+            $result=ExecuteQuery($str);
+            while($row = mysqli_fetch_assoc($result)){
+              $commentId = $row['commentId'];
+              // echo $commentId;
+              $str1 = "CALL deleteComment($commentId)";
+              $res1=ExecuteQuery($str1);
+            }
+
             $str = "CALL deleteThread($threadId)";
             $result=ExecuteQuery($str);
 

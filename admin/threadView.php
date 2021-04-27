@@ -195,7 +195,7 @@
         ?>
 
     <!-- Start Footer -->
-    <footer class="footer-area bg-f">
+    <!-- <footer class="footer-area bg-f">
       <div class="copyright">
         <div class="container">
           <div class="row">
@@ -209,7 +209,7 @@
           </div>
         </div>
       </div>
-    </footer>
+    </footer> -->
     <!-- End Footer -->
    
   </body>
